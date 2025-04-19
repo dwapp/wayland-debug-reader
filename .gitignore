@@ -10,3 +10,6 @@ devenv.local.nix
 
 # python
 *.pyproject.user
+
+# qtc
+.qtcreator/
