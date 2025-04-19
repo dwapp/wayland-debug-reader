@@ -1,5 +1,4 @@
 .pragma library
-.import "./lodash.js" as Lodash
 
 const re = {
 //        logLine: /^\[\d{7}\.\d{3}\] (.*)$/,
@@ -175,5 +174,9 @@ function createInitialState() {
 
 function parseLog(log) {
     const lines = log.split('\n');
-    return Lodash._.reduce(lines, processLogLine, createInitialState());
+    let state = createInitialState();
+    for (let i = 0; i < lines.length; i++) {
+        state = processLogLine(state, lines[i]);
+    }
+    return state;
 }

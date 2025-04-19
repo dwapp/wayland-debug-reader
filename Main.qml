@@ -149,13 +149,13 @@ ApplicationWindow {
         });
 
         // and the objets
-        Lodash._.forEach(state.objects, function(object) {
-            objects.append(object);
-        });
+        for (let k in state.objects) {
+            objects.append(state.objects[k]);
+        }
 
         // and the globals
-        Lodash._.forEach(state.globals, function(global) {
-            globals.append(global);
-        });
+        for (let k in state.globals) {
+            globals.append(state.globals[k])
+        }
     }
 }
