@@ -1,7 +1,6 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Window
-import "./lodash.js" as Lodash
 import "./wayland-debug-tools.js" as WaylandDebugTools
 
 ApplicationWindow {
@@ -10,7 +9,7 @@ ApplicationWindow {
     title: "wayland-log-reader"
     width: 1024
     height: 1024
-    background: Rectangle { color: "white" }
+    background: Rectangle { color: "#F5F5DC" }
     property int highlightObject: 0
     property string log: waylandLog
 
@@ -18,99 +17,113 @@ ApplicationWindow {
         highlightObject = object.uniqueId;
     }
 
-    ScrollView {
-        id: objectsView
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        anchors.right: parent.right
-        width: parent.width / 2
-        Column {
-            spacing: 3
-            width: objectsView.width
-            Label { text: "All objects"; font.weight: Font.Bold; font.pixelSize: 16 }
-            Repeater {
-                model: objects
-                ObjectLabel { object: objects.get(index); onClicked: handleObjectSelected(object) }
-            }
-            Item { height: 5; width: 1 }
-            Label { text: "Globals"; font.weight: Font.Bold; font.pixelSize: 16 }
-            Repeater {
-                model: globals
-                Label { text: number + ": " + interfaceName + " v" + version }
+    // 使用 SplitView 替代手动分隔条
+    SplitView {
+        anchors.fill: parent
+        orientation: Qt.Horizontal
+
+        // 左侧内容
+        Item {
+            id: leftPane
+            implicitWidth: 500 // 默认宽度
+            ScrollView {
+                anchors.fill: parent
+                Column {
+                    spacing: 3
+                    width: leftPane.width
+                    Label { text: "All objects"; font.weight: Font.Bold; font.pixelSize: 16 }
+                    Repeater {
+                        model: objects
+                        ObjectLabel { object: objects.get(index); onClicked: handleObjectSelected(object) }
+                    }
+                    Item { height: 5; width: 1 }
+                    Label { text: "Globals"; font.weight: Font.Bold; font.pixelSize: 16 }
+                    Repeater {
+                        model: globals
+                        Label { text: number + ": " + interfaceName + " v" + version }
+                    }
+                }
             }
         }
-    }
 
-    ScrollView {
-        id: messagesView
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        width: parent.width / 2
-        clip: true
+        // 分隔条修正
+        Rectangle {
+            id: splitterHandle
+            width: 5
+            color: "gray"
+            SplitView.preferredWidth: 5
+        }
 
-        Column {
-            width: messagesView.width
-            CheckBox {
-                id: showComments
-                text: "Show comments"
-                checked: true
-            }
-
-            Repeater  {
-                model: parsedLines
-                Item {
-                    id: lineItem
-                    property var line: parsedLines[index]
-                    width: parent.width
-                    implicitWidth: childrenRect.width
-                    implicitHeight: childrenRect.height
-                    Repeater {
-                        model: type === "comment" && showComments.checked
-                        Label {
-                            height: 25
-                            text: rawText; color: "gray"
-                        }
+        // 右侧内容
+        Item {
+            id: rightPane
+            implicitWidth: 300 // 默认宽度
+            ScrollView {
+                anchors.fill: parent
+                clip: true
+                Column {
+                    width: rightPane.width
+                    CheckBox {
+                        id: showComments
+                        text: "Show comments"
+                        checked: true
                     }
                     Repeater {
-                        model: type === "event"
-                        Row {
-//                            anchors.right: parent.right
-                            height: 25
-                            spacing: 5
-                            ObjectLabel { object: parts.object; onClicked: handleObjectSelected(object) }
-                            Label { text: parts.fn }
-                            Label { text: "(" }
+                        model: parsedLines
+                        Item {
+                            id: lineItem
+                            property var line: parsedLines[index]
+                            width: parent.width
+                            implicitWidth: childrenRect.width
+                            implicitHeight: childrenRect.height
                             Repeater {
-                                model: parts.args
-                                ArgumentItem {
-                                    arg: parts.args[index];
-                                    function onObjectSelected(object) {
-                                        handleObjectSelected(object)
-                                    }
+                                model: type === "comment" && showComments.checked
+                                Label {
+                                    height: 25
+                                    text: rawText; color: "gray"
                                 }
                             }
-                            Label { text: ")" }
-                        }
-                    }
-                    Repeater {
-                        model: type === "request"
-                        Row {
-                            height: 25
-                            spacing: 5
-                            Label { text: " → " }
-                            ObjectLabel { object: parts.object; onClicked: window.highlightObject = object.uniqueId }
-                            Label { text: parts.fn }
-                            Label { text: "(" }
                             Repeater {
-                                model: parts.args
-                                ArgumentItem {
-                                    arg: parts.args[index];
-                                    function onObjectSelected(object) {
-                                        handleObjectSelected(object)
+                                model: type === "event"
+                                Row {
+                                    height: 25
+                                    spacing: 5
+                                    ObjectLabel { object: parts.object; onClicked: handleObjectSelected(object) }
+                                    Label { text: parts.fn }
+                                    Label { text: "(" }
+                                    Repeater {
+                                        model: parts.args
+                                        ArgumentItem {
+                                            arg: parts.args[index];
+                                            function onObjectSelected(object) {
+                                                handleObjectSelected(object)
+                                            }
+                                        }
                                     }
+                                    Label { text: ")" }
                                 }
                             }
-                            Label { text: ")" }
+                            Repeater {
+                                model: type === "request"
+                                Row {
+                                    height: 25
+                                    spacing: 5
+                                    Label { text: " → " }
+                                    ObjectLabel { object: parts.object; onClicked: window.highlightObject = object.uniqueId }
+                                    Label { text: parts.fn }
+                                    Label { text: "(" }
+                                    Repeater {
+                                        model: parts.args
+                                        ArgumentItem {
+                                            arg: parts.args[index];
+                                            function onObjectSelected(object) {
+                                                handleObjectSelected(object)
+                                            }
+                                        }
+                                    }
+                                    Label { text: ")" }
+                                }
+                            }
                         }
                     }
                 }
