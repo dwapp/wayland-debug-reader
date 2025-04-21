@@ -7,8 +7,8 @@ ApplicationWindow {
     id: window
     visible: true
     title: "wayland-log-reader"
-    width: 1024
-    height: 1024
+    width: 800
+    height: 600
     background: Rectangle { color: "#F5F5DC" }
     property int highlightObject: 0
     property string log: waylandLog
@@ -24,40 +24,8 @@ ApplicationWindow {
 
         // 左侧内容
         Item {
-            id: leftPane
-            implicitWidth: 500 // 默认宽度
-            ScrollView {
-                anchors.fill: parent
-                Column {
-                    spacing: 3
-                    width: leftPane.width
-                    Label { text: "All objects"; font.weight: Font.Bold; font.pixelSize: 16 }
-                    Repeater {
-                        model: objects
-                        ObjectLabel { object: objects.get(index); onClicked: handleObjectSelected(object) }
-                    }
-                    Item { height: 5; width: 1 }
-                    Label { text: "Globals"; font.weight: Font.Bold; font.pixelSize: 16 }
-                    Repeater {
-                        model: globals
-                        Label { text: number + ": " + interfaceName + " v" + version }
-                    }
-                }
-            }
-        }
-
-        // 分隔条修正
-        Rectangle {
-            id: splitterHandle
-            width: 5
-            color: "gray"
-            SplitView.preferredWidth: 5
-        }
-
-        // 右侧内容
-        Item {
-            id: rightPane
-            implicitWidth: 300 // 默认宽度
+                       id: rightPane
+            SplitView.preferredWidth: 500 // 默认宽度
             ScrollView {
                 anchors.fill: parent
                 clip: true
@@ -125,6 +93,31 @@ ApplicationWindow {
                                 }
                             }
                         }
+                    }
+                }
+            }
+        }
+
+
+        // 右侧内容
+        Item {
+             id: leftPane
+            SplitView.preferredWidth: 300 // 默认宽度
+            ScrollView {
+                anchors.fill: parent
+                Column {
+                    spacing: 3
+                    width: leftPane.width
+                    Label { text: "All objects"; font.weight: Font.Bold; font.pixelSize: 16 }
+                    Repeater {
+                        model: objects
+                        ObjectLabel { object: objects.get(index); onClicked: handleObjectSelected(object) }
+                    }
+                    Item { height: 5; width: 1 }
+                    Label { text: "Globals"; font.weight: Font.Bold; font.pixelSize: 16 }
+                    Repeater {
+                        model: globals
+                        Label { text: number + ": " + interfaceName + " v" + version }
                     }
                 }
             }
