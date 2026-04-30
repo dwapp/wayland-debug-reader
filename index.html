@@ -301,6 +301,7 @@
     .arg-int   { color: #f0c060; }
     .arg-str   { color: #a0d880; }
     .arg-unk   { color: var(--text-dim); }
+    .discarded-tag { color: #e07050; font-style: italic; margin-right: 4px; opacity: 0.8; }
 
     /* ── STATS ── */
     .stat-badge {
@@ -535,9 +536,10 @@ function renderLog() {
         }
         timeHtml = `<span class="timestamp">[${tsText}]</span> `;
       }
+      const discardedHtml = line.discarded ? '<span class="discarded-tag">discarded</span> ' : '';
       const arrow = type === 'request' ? '<span class="arrow">→</span>' : '';
       const argsHtml = parts.args.map(renderArg).join('<span class="arg-sep">, </span>');
-      div.innerHTML = `${timeHtml}${arrow}${makeObjTag(parts.object)}<span class="fn-name">.${escHtml(parts.fn)}</span><span class="paren">(</span>${argsHtml}<span class="paren">)</span>`;
+      div.innerHTML = `${timeHtml}${discardedHtml}${arrow}${makeObjTag(parts.object)}<span class="fn-name">.${escHtml(parts.fn)}</span><span class="paren">(</span>${argsHtml}<span class="paren">)</span>`;
     }
 
     frag.appendChild(div);

@@ -1,7 +1,7 @@
 const re = {
     // New wayland log format: [timestamp] {Queue Name} obj#id.fn(...)
     // Supports: optional leading space in timestamp, optional 'discarded' prefix
-    logLine: /^\[\s*(\d+[.,]\d{3})\] (?:\{[^}]+\} )?(?:discarded )?(( -> )?([\w\[\]]+#\d+)\.(\w+)\((.*)\))$/,
+    logLine: /^\[\s*(\d+[.,]\d{3})\] (?:\{[^}]+\} )?(discarded )?(( -> )?([\w\[\]]+#\d+)\.(\w+)\((.*)\))$/,
     sentMessage: /^ -> (.*)$/,
     message: /^([\w\[\]]+#\d+)\.(\w+)\((.*)\)$/,
     arguments: /^$/,
@@ -90,12 +90,13 @@ function parseLine(line) {
 
     const timestampStr = lineParts[1];
     const timestamp = parseFloat(timestampStr.replace(',', '.'));
-    const message = lineParts[2];
+    const discarded = !!lineParts[2]; // 'discarded ' captured in group 2
+    const message = lineParts[3];
     const sentMessage = message.match(re.sentMessage);
     const parsedMessage = parseMessage(sentMessage ? sentMessage[1] : message);
 
     const type = sentMessage ? "request" : "event"; // TODO: support server logs
-    return { type: type, timestampStr: timestampStr, timestamp: timestamp, parts: parsedMessage, rawText: line };
+    return { type: type, timestampStr: timestampStr, timestamp: timestamp, discarded: discarded, parts: parsedMessage, rawText: line };
 }
 
 var nextId = 1;
