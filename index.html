@@ -83,7 +83,7 @@
 
     /* ── FILTERS BAR ── */
     .filters {
-      display: flex;
+      display: none;
       align-items: center;
       gap: 10px;
       padding: 7px 18px;
@@ -91,6 +91,7 @@
       border-bottom: 1px solid var(--border);
       flex-shrink: 0;
     }
+    .filters.visible { display: flex; }
     .filters input[type=search] {
       flex: 1;
       max-width: 320px;
@@ -344,12 +345,12 @@
 
 
 <!-- FILTERS -->
-<div class="filters">
+<div class="filters" id="filters-bar">
   <div style="display:flex; align-items:center; gap:5px;">
     <input type="search" id="search-input" placeholder="搜索接口名、方法名、参数…" />
     <select id="search-mode" class="btn" style="padding: 2px 6px; height: 26px; border-radius:var(--radius); font-size:12px; background:var(--bg3); color:var(--text); border:1px solid var(--border); outline:none;">
+      <option value="search" selected>搜索</option>
       <option value="filter">过滤</option>
-      <option value="search">搜索</option>
     </select>
     <button class="btn search-nav hidden" id="search-prev" style="padding: 0 8px;" title="上一个 (Shift+Enter)">▲</button>
     <button class="btn search-nav hidden" id="search-next" style="padding: 0 8px;" title="下一个 (Enter)">▼</button>
@@ -599,6 +600,7 @@ function loadLog(text, label) {
 
   document.getElementById('file-label').textContent = label;
   document.getElementById('drop-zone').classList.add('hidden');
+  document.getElementById('filters-bar').classList.add('visible');
   highlightedUniqueIds.clear();
 
   renderSidebar();
@@ -609,6 +611,7 @@ function resetApp() {
   appState = null;
   highlightedUniqueIds.clear();
   document.getElementById('drop-zone').classList.remove('hidden');
+  document.getElementById('filters-bar').classList.remove('visible');
   document.getElementById('log-panel').innerHTML = '<div class="empty-msg">请先加载日志文件</div>';
   document.getElementById('objects-list').innerHTML = '<div class="empty-msg">暂无数据</div>';
   document.getElementById('globals-list').innerHTML = '';
