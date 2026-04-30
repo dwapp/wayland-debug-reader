@@ -1,11 +1,11 @@
 const re = {
-//        logLine: /^\[\d{7}\.\d{3}\] (.*)$/,
-    logLine: /^\[ {0,7}\d{0,7}[\.,]\d{3}\] (( -> )?(\w+@\d+)\.(\w+)\((.*)\))$/,
+    // New wayland log format: [timestamp] {Queue Name} obj#id.fn(...)
+    logLine: /^\[\d+[.,]\d{3}\] \{[^}]+\} (( -> )?([\w\[\]]+#\d+)\.(\w+)\((.*)\))$/,
     sentMessage: /^ -> (.*)$/,
-    message: /^(\w+@\d+)\.(\w+)\((.*)\)$/,
+    message: /^([\w\[\]]+#\d+)\.(\w+)\((.*)\)$/,
     arguments: /^$/,
-    newId: /^new id ((\w+|\[\unknown\])@\d+)$/,
-    object: /^(\w+|\[unknown\])@(\d+)$/
+    newId: /^new id (([\w\[\]]+#\d+))$/,
+    object: /^([\w\[\]]+)#(\d+)$/
 };
 
 function parseNewId(arg) {
