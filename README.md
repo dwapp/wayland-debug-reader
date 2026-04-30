@@ -4,16 +4,19 @@ A browser-based viewer for Wayland protocol debug logs.
 
 **🌐 Live demo: [dwapp.github.io/wayland-debug-reader](https://dwapp.github.io/wayland-debug-reader/)**
 
-![screenshot](test/screenshot.png)
+![screenshot-dark](screenshots/dark-mode.png)
+![screenshot-light](screenshots/light-mode.png)
 
 ## Features
 
 - **Drag & drop** a log file, or use the file picker, or paste text directly
+- **Dual-theme support** — switch between Dark and Light modes (persists in browser)
 - Color-coded log lines — events (blue), requests (green), comments (gray)
 - **Left sidebar** shows all live Wayland objects and bound globals
 - **Object highlighting** — click any object to highlight all related lines across the log
 - **Filter-only mode** — show only lines involving the selected object
-- **Search** by interface name, method, or argument
+- **Search** by interface name, method, or argument with navigation (Prev/Next)
+- **Relative timestamps** — toggle between absolute and relative (+X.XXXs) time
 - Toggle visibility of events / requests / comments independently
 - Resizable sidebar
 
@@ -52,6 +55,7 @@ Supports the modern `libwayland` debug format (libwayland ≥ 1.22):
 |------|-------------|
 | `index.html` | Single-file web application (UI + rendering) |
 | `wayland-debug-tools.js` | Log parser — parses raw log text into a structured state |
+| `screenshots/` | Screenshots for README |
 | `test/` | Sample log files for testing |
 
 ## License
