@@ -58,6 +58,10 @@ Supports the modern `libwayland` debug format (libwayland ≥ 1.22):
 | `screenshots/` | Screenshots for README |
 | `test/` | Sample log files for testing |
 
+## Credits
+
+This project was inspired by [johanhelsing/wayland-log-reader](https://github.com/johanhelsing/wayland-log-reader). The core parsing logic in `wayland-debug-tools.js` is modified from that project.
+
 ## License
 
 GPLv3 — see [LICENSE.GPLv3](LICENSE.GPLv3).

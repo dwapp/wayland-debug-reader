@@ -1,3 +1,4 @@
+// Modified from https://github.com/johanhelsing/wayland-log-reader
 const re = {
     // New wayland log format: [timestamp] {Queue Name} obj#id.fn(...)
     // Supports: optional leading space in timestamp, optional 'discarded' prefix
