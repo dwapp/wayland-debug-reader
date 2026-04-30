@@ -539,6 +539,9 @@ function renderLog() {
     updateSearchNav();
   }
 
+  const isSearchActive = searchMode === 'search' && query.length > 0;
+  document.querySelectorAll('.search-nav').forEach(el => el.classList.toggle('hidden', !isSearchActive));
+
   // attach click handlers to obj-tags inside log
   panel.querySelectorAll('.obj-tag[data-uid]').forEach(tag => {
     tag.addEventListener('click', () => {
@@ -686,9 +689,7 @@ document.getElementById('search-next').addEventListener('click', () => {
   updateSearchNav();
 });
 
-document.getElementById('search-mode').addEventListener('change', (e) => {
-  const isSearch = e.target.value === 'search';
-  document.querySelectorAll('.search-nav').forEach(el => el.classList.toggle('hidden', !isSearch));
+document.getElementById('search-mode').addEventListener('change', () => {
   renderLog();
 });
 document.getElementById('search-input').addEventListener('keydown', e => {
