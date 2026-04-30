@@ -105,6 +105,13 @@
       transition: border-color .15s;
     }
     .filters input[type=search]:focus { border-color: var(--accent); }
+    .search-match { background: rgba(91,142,240, 0.15) !important; }
+    .search-active { background: rgba(91,142,240, 0.4) !important; border-left: 3px solid var(--accent) !important; }
+    .search-nav.hidden { display: none !important; }
+    .search-nav {
+      height: 26px; font-size: 12px;
+      display: flex; align-items: center; justify-content: center;
+    }
     .toggle-label {
       display: flex;
       align-items: center;
@@ -332,7 +339,16 @@
 
 <!-- FILTERS -->
 <div class="filters">
-  <input type="search" id="search-input" placeholder="搜索接口名、方法名、参数…" />
+  <div style="display:flex; align-items:center; gap:5px;">
+    <input type="search" id="search-input" placeholder="搜索接口名、方法名、参数…" />
+    <select id="search-mode" class="btn" style="padding: 2px 6px; height: 26px; border-radius:var(--radius); font-size:12px; background:var(--bg3); color:var(--text); border:1px solid var(--border); outline:none;">
+      <option value="filter">过滤</option>
+      <option value="search">搜索</option>
+    </select>
+    <button class="btn search-nav hidden" id="search-prev" style="padding: 0 8px;" title="上一个 (Shift+Enter)">▲</button>
+    <button class="btn search-nav hidden" id="search-next" style="padding: 0 8px;" title="下一个 (Enter)">▼</button>
+    <span id="search-count" class="search-nav hidden" style="color:var(--text-dim); min-width:30px;">0/0</span>
+  </div>
   <label class="toggle-label"><input type="checkbox" id="show-events" checked /> events</label>
   <label class="toggle-label"><input type="checkbox" id="show-requests" checked /> requests</label>
   <label class="toggle-label"><input type="checkbox" id="show-comments" checked /> comments</label>
@@ -379,6 +395,8 @@
 // ─── State ───────────────────────────────────────────────────────────────────
 let appState = null;        // parsed wayland state
 let highlightedUniqueIds = new Set(); // currently highlighted object uniqueIds
+let currentSearchMatches = [];
+let currentSearchIndex = 0;
 
 // ─── Color hash (replaces Qt.hsla) ───────────────────────────────────────────
 function hashStr(str) {
@@ -420,6 +438,7 @@ function renderLog() {
   if (!appState) return;
 
   const query   = document.getElementById('search-input').value.toLowerCase();
+  const searchMode = document.getElementById('search-mode').value;
   const showEv  = document.getElementById('show-events').checked;
   const showReq = document.getElementById('show-requests').checked;
   const showCom = document.getElementById('show-comments').checked;
@@ -427,6 +446,7 @@ function renderLog() {
 
   const frag = document.createDocumentFragment();
   let countEv = 0, countReq = 0, countCom = 0;
+  currentSearchMatches = [];
 
   for (const line of appState.parsedLines) {
     const { type, parts, rawText } = line;
@@ -450,7 +470,14 @@ function renderLog() {
     }
 
     // search filter
-    if (query && !rawText.toLowerCase().includes(query)) continue;
+    let isSearchMatch = false;
+    if (query) {
+      if (rawText.toLowerCase().includes(query)) {
+        isSearchMatch = true;
+      } else if (searchMode === 'filter') {
+        continue;
+      }
+    }
 
     // count
     if (type === 'event')   countEv++;
@@ -459,6 +486,11 @@ function renderLog() {
 
     const div = document.createElement('div');
     div.className = 'log-line ' + type;
+
+    if (isSearchMatch && searchMode === 'search') {
+      div.classList.add('search-match');
+      currentSearchMatches.push(div);
+    }
 
     // highlight line if object matches
     if (highlightedUniqueIds.size > 0 && (type === 'event' || type === 'request')) {
@@ -494,6 +526,11 @@ function renderLog() {
   document.getElementById('stat-events').textContent   = countEv;
   document.getElementById('stat-requests').textContent = countReq;
   document.getElementById('stat-comments').textContent = countCom;
+
+  if (searchMode === 'search') {
+    currentSearchIndex = 0;
+    updateSearchNav();
+  }
 
   // attach click handlers to obj-tags inside log
   panel.querySelectorAll('.obj-tag[data-uid]').forEach(tag => {
@@ -613,6 +650,47 @@ let searchTimer;
 document.getElementById('search-input').addEventListener('input', () => {
   clearTimeout(searchTimer);
   searchTimer = setTimeout(renderLog, 180);
+});
+
+function updateSearchNav() {
+  const countEl = document.getElementById('search-count');
+  if (!currentSearchMatches.length) {
+    countEl.textContent = '0/0';
+    return;
+  }
+  countEl.textContent = `${currentSearchIndex + 1}/${currentSearchMatches.length}`;
+  currentSearchMatches.forEach(el => el.classList.remove('search-active'));
+  const activeEl = currentSearchMatches[currentSearchIndex];
+  activeEl.classList.add('search-active');
+  activeEl.scrollIntoView({ block: 'center', behavior: 'smooth' });
+}
+
+document.getElementById('search-prev').addEventListener('click', () => {
+  if (!currentSearchMatches.length) return;
+  currentSearchIndex = (currentSearchIndex - 1 + currentSearchMatches.length) % currentSearchMatches.length;
+  updateSearchNav();
+});
+
+document.getElementById('search-next').addEventListener('click', () => {
+  if (!currentSearchMatches.length) return;
+  currentSearchIndex = (currentSearchIndex + 1) % currentSearchMatches.length;
+  updateSearchNav();
+});
+
+document.getElementById('search-mode').addEventListener('change', (e) => {
+  const isSearch = e.target.value === 'search';
+  document.querySelectorAll('.search-nav').forEach(el => el.classList.toggle('hidden', !isSearch));
+  renderLog();
+});
+document.getElementById('search-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter' && document.getElementById('search-mode').value === 'search') {
+    e.preventDefault();
+    if (e.shiftKey) {
+      document.getElementById('search-prev').click();
+    } else {
+      document.getElementById('search-next').click();
+    }
+  }
 });
 
 // ─── Sidebar resize ───────────────────────────────────────────────────────────
