@@ -116,8 +116,8 @@ function updateLiveObjects(line, state) {
     line.parts.args.forEach(function(arg) {
         if (arg.type === "new") {
             const id = arg.object.id;
-            if (state.liveObjectsById[id])
-                console.warn(id, "is already in db, something is wrong, continuing anyway");
+            // Note: Wayland recycles object IDs (e.g., wl_callback).
+            // We just overwrite the old object in liveObjectsById.
             const uniqueId = getUniqueId();
             const object = { interfaceName: arg.object.interfaceName, id: arg.object.id, uniqueId: uniqueId };
             state.objects[uniqueId] = object;
