@@ -1,6 +1,7 @@
 const re = {
     // New wayland log format: [timestamp] {Queue Name} obj#id.fn(...)
-    logLine: /^\[(\d+[.,]\d{3})\] (?:\{[^}]+\} )?(( -> )?([\w\[\]]+#\d+)\.(\w+)\((.*)\))$/,
+    // Supports: optional leading space in timestamp, optional 'discarded' prefix
+    logLine: /^\[\s*(\d+[.,]\d{3})\] (?:\{[^}]+\} )?(?:discarded )?(( -> )?([\w\[\]]+#\d+)\.(\w+)\((.*)\))$/,
     sentMessage: /^ -> (.*)$/,
     message: /^([\w\[\]]+#\d+)\.(\w+)\((.*)\)$/,
     arguments: /^$/,
