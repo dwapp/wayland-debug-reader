@@ -378,7 +378,7 @@
 <script>
 // ─── State ───────────────────────────────────────────────────────────────────
 let appState = null;        // parsed wayland state
-let highlightedUniqueId = 0; // currently highlighted object uniqueId
+let highlightedUniqueIds = new Set(); // currently highlighted object uniqueIds
 
 // ─── Color hash (replaces Qt.hsla) ───────────────────────────────────────────
 function hashStr(str) {
@@ -396,7 +396,7 @@ function makeObjTag(obj) {
   if (!obj) return '<span class="arg-unk">?</span>';
   const uid  = obj.uniqueId || 0;
   const color = uid ? colorForUniqueId(uid) : '#888';
-  const hl   = uid && uid === highlightedUniqueId ? ' highlighted-tag' : '';
+  const hl   = uid && highlightedUniqueIds.has(uid) ? ' highlighted-tag' : '';
   const label = `${obj.interfaceName}@${obj.id}`;
   return `<span class="obj-tag${hl}" style="color:${color}" data-uid="${uid}" title="${label}">${label}</span>`;
 }
@@ -437,13 +437,13 @@ function renderLog() {
     if (type === 'comment' && !showCom) continue;
 
     // highlight-only filter
-    if (hlOnly && highlightedUniqueId) {
+    if (hlOnly && highlightedUniqueIds.size > 0) {
       if (type === 'event' || type === 'request') {
         const obj = parts.object;
-        const inObj = obj && obj.uniqueId === highlightedUniqueId;
+        const inObj = obj && highlightedUniqueIds.has(obj.uniqueId);
         const inArgs = parts.args && parts.args.some(a =>
-          (a.type === 'object' && a.uniqueId === highlightedUniqueId) ||
-          (a.type === 'new'    && a.object && a.object.uniqueId === highlightedUniqueId)
+          (a.type === 'object' && highlightedUniqueIds.has(a.uniqueId)) ||
+          (a.type === 'new'    && a.object && highlightedUniqueIds.has(a.object.uniqueId))
         );
         if (!inObj && !inArgs) continue;
       }
@@ -461,12 +461,12 @@ function renderLog() {
     div.className = 'log-line ' + type;
 
     // highlight line if object matches
-    if (highlightedUniqueId && (type === 'event' || type === 'request')) {
+    if (highlightedUniqueIds.size > 0 && (type === 'event' || type === 'request')) {
       const obj = parts.object;
-      const touched = (obj && obj.uniqueId === highlightedUniqueId) ||
+      const touched = (obj && highlightedUniqueIds.has(obj.uniqueId)) ||
         (parts.args && parts.args.some(a =>
-          (a.type === 'object' && a.uniqueId === highlightedUniqueId) ||
-          (a.type === 'new'    && a.object && a.object.uniqueId === highlightedUniqueId)
+          (a.type === 'object' && highlightedUniqueIds.has(a.uniqueId)) ||
+          (a.type === 'new'    && a.object && highlightedUniqueIds.has(a.object.uniqueId))
         ));
       if (touched) div.classList.add('highlighted-line');
     }
@@ -514,7 +514,7 @@ function renderSidebar() {
   for (const uid in appState.objects) {
     const obj = appState.objects[uid];
     const color = colorForUniqueId(obj.uniqueId);
-    const hl = obj.uniqueId === highlightedUniqueId ? ' highlighted' : '';
+    const hl = highlightedUniqueIds.has(obj.uniqueId) ? ' highlighted' : '';
     const chip = document.createElement('span');
     chip.className = `obj-chip${hl}`;
     chip.style.color = color;
@@ -539,7 +539,11 @@ function renderSidebar() {
 
 // ─── Object selection ─────────────────────────────────────────────────────────
 function selectObject(uid) {
-  highlightedUniqueId = (highlightedUniqueId === uid) ? 0 : uid; // toggle
+  if (highlightedUniqueIds.has(uid)) {
+    highlightedUniqueIds.delete(uid);
+  } else {
+    highlightedUniqueIds.add(uid);
+  }
   renderSidebar();
   renderLog();
 }
@@ -552,7 +556,7 @@ function loadLog(text, label) {
 
   document.getElementById('file-label').textContent = label;
   document.getElementById('drop-zone').classList.add('hidden');
-  highlightedUniqueId = 0;
+  highlightedUniqueIds.clear();
 
   renderSidebar();
   renderLog();
@@ -560,7 +564,7 @@ function loadLog(text, label) {
 
 function resetApp() {
   appState = null;
-  highlightedUniqueId = 0;
+  highlightedUniqueIds.clear();
   document.getElementById('drop-zone').classList.remove('hidden');
   document.getElementById('log-panel').innerHTML = '<div class="empty-msg">请先加载日志文件</div>';
   document.getElementById('objects-list').innerHTML = '<div class="empty-msg">暂无数据</div>';
