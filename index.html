@@ -105,8 +105,14 @@
       transition: border-color .15s;
     }
     .filters input[type=search]:focus { border-color: var(--accent); }
-    .search-match { background: rgba(91,142,240, 0.15) !important; }
-    .search-active { background: rgba(91,142,240, 0.4) !important; border-left: 3px solid var(--accent) !important; }
+    .search-match { box-shadow: inset 3px 0 0 rgba(255, 255, 255, 0.3) !important; }
+    .search-active {
+      background: rgba(255, 255, 255, 0.15) !important;
+      outline: 2px solid #fff !important;
+      outline-offset: -2px;
+      position: relative;
+      z-index: 1;
+    }
     .search-nav.hidden { display: none !important; }
     .search-nav {
       height: 26px; font-size: 12px;
