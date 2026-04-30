@@ -392,13 +392,14 @@
 <!-- HEADER -->
 <header>
   <h1>⚡ Wayland Debug Reader</h1>
-  <span class="header-meta" id="file-label">未加载</span>
+  <span class="header-meta" id="file-label" data-i18n="fileLabel">No file loaded</span>
   <div class="header-spacer"></div>
-  <span class="stat-badge"><span class="dot dot-event"></span><span id="stat-events">0</span> events</span>
-  <span class="stat-badge"><span class="dot dot-request"></span><span id="stat-requests">0</span> requests</span>
-  <span class="stat-badge"><span class="dot dot-comment"></span><span id="stat-comments">0</span> comments</span>
-  <button class="btn" onclick="resetApp()" style="margin-left:8px">🔄 重新加载</button>
-  <button class="btn" id="theme-toggle" style="margin-left:4px;display:inline-flex;align-items:center;gap:5px;font-size:14px;padding:5px 10px;" title="切换主题">🌙</button>
+  <span class="stat-badge"><span class="dot dot-event"></span><span id="stat-events">0</span> <span data-i18n="statEvents">events</span></span>
+  <span class="stat-badge"><span class="dot dot-request"></span><span id="stat-requests">0</span> <span data-i18n="statRequests">requests</span></span>
+  <span class="stat-badge"><span class="dot dot-comment"></span><span id="stat-comments">0</span> <span data-i18n="statComments">comments</span></span>
+  <button class="btn" onclick="resetApp()" style="margin-left:8px" data-i18n="resetBtn">🔄 Reload</button>
+  <button class="btn" id="theme-toggle" style="margin-left:4px;display:inline-flex;align-items:center;gap:5px;font-size:14px;padding:5px 10px;" data-i18n-title="themeTitle" title="Toggle theme">🌙</button>
+  <button class="btn" id="lang-toggle" style="margin-left:4px;font-weight:600;font-size:12px;padding:5px 10px;" data-i18n-title="langTitle" title="Toggle language">EN</button>
   <a href="https://github.com/dwapp/wayland-debug-reader" target="_blank" rel="noopener" class="btn" style="margin-left:4px;display:inline-flex;align-items:center;gap:5px;text-decoration:none">
     <svg height="14" width="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
     GitHub
@@ -409,20 +410,20 @@
 <!-- FILTERS -->
 <div class="filters" id="filters-bar">
   <div style="display:flex; align-items:center; gap:5px;">
-    <input type="search" id="search-input" placeholder="搜索接口名、方法名、参数…" />
+    <input type="search" id="search-input" data-i18n-placeholder="searchPlaceholder" placeholder="Search interface, method, argument…" />
     <select id="search-mode" class="btn" style="padding: 2px 6px; height: 26px; border-radius:var(--radius); font-size:12px; background:var(--bg3); color:var(--text); border:1px solid var(--border); outline:none;">
-      <option value="search" selected>搜索</option>
-      <option value="filter">过滤</option>
+      <option value="search" selected data-i18n="searchOption">Search</option>
+      <option value="filter" data-i18n="filterOption">Filter</option>
     </select>
-    <button class="btn search-nav hidden" id="search-prev" style="padding: 0 8px;" title="上一个 (Shift+Enter)">▲</button>
-    <button class="btn search-nav hidden" id="search-next" style="padding: 0 8px;" title="下一个 (Enter)">▼</button>
+    <button class="btn search-nav hidden" id="search-prev" style="padding: 0 8px;" data-i18n-title="prevTitle" title="Previous (Shift+Enter)">▲</button>
+    <button class="btn search-nav hidden" id="search-next" style="padding: 0 8px;" data-i18n-title="nextTitle" title="Next (Enter)">▼</button>
     <span id="search-count" class="search-nav hidden" style="color:var(--text-dim); min-width:30px;">0/0</span>
   </div>
-  <label class="toggle-label"><input type="checkbox" id="show-events" checked /> events</label>
-  <label class="toggle-label"><input type="checkbox" id="show-requests" checked /> requests</label>
-  <label class="toggle-label"><input type="checkbox" id="show-comments" checked /> comments</label>
-  <label class="toggle-label"><input type="checkbox" id="show-time-diff" /> 相对时间</label>
-  <label class="toggle-label"><input type="checkbox" id="highlight-only" /> 仅高亮对象</label>
+  <label class="toggle-label"><input type="checkbox" id="show-events" checked /> <span data-i18n="showEvents">events</span></label>
+  <label class="toggle-label"><input type="checkbox" id="show-requests" checked /> <span data-i18n="showRequests">requests</span></label>
+  <label class="toggle-label"><input type="checkbox" id="show-comments" checked /> <span data-i18n="showComments">comments</span></label>
+  <label class="toggle-label"><input type="checkbox" id="show-time-diff" /> <span data-i18n="timeDiff">Relative time</span></label>
+  <label class="toggle-label"><input type="checkbox" id="highlight-only" /> <span data-i18n="highlightOnly">Highlight only</span></label>
 </div>
 
 <!-- MAIN -->
@@ -431,19 +432,19 @@
   <div id="drop-zone">
     <div class="drop-icon">🌊</div>
     <div class="drop-title">Wayland Debug Reader</div>
-    <div class="drop-sub">拖拽日志文件到此处，或选择文件 / 粘贴文本</div>
+    <div class="drop-sub" data-i18n="dropSub">Drop a log file here, or choose a file / paste text</div>
     <div class="drop-actions">
-      <button class="btn primary" onclick="document.getElementById('file-input').click()">📂 选择文件</button>
+      <button class="btn primary" onclick="document.getElementById('file-input').click()" data-i18n="chooseFile">📂 Choose file</button>
       <input type="file" id="file-input" accept=".log,.txt,*" />
     </div>
-    <textarea id="paste-area" class="paste-area" placeholder="或者直接粘贴日志内容到这里…"></textarea>
-    <button class="btn primary" id="paste-load-btn" onclick="loadFromPaste()">▶ 加载日志</button>
+    <textarea id="paste-area" class="paste-area" data-i18n-placeholder="pasteArea" placeholder="Or paste log content here…"></textarea>
+    <button class="btn primary" id="paste-load-btn" onclick="loadFromPaste()" data-i18n="loadLog">▶ Load log</button>
   </div>
   <!-- LEFT SIDEBAR -->
   <div class="sidebar" id="sidebar">
     <div class="sidebar-section" id="objects-section" style="flex:1;overflow-y:auto">
       <div class="sidebar-title">All Objects</div>
-      <div id="objects-list"><div class="empty-msg">暂无数据</div></div>
+      <div id="objects-list"><div class="empty-msg" data-i18n="noObjects">No data</div></div>
     </div>
     <div class="sidebar-section" id="globals-section" style="max-height:35%;overflow-y:auto">
       <div class="sidebar-title">Globals</div>
@@ -456,10 +457,11 @@
 
   <!-- LOG PANEL -->
   <div class="log-panel" id="log-panel">
-    <div class="empty-msg">请先加载日志文件</div>
+    <div class="empty-msg" data-i18n="emptyLog">Load a log file to start</div>
   </div>
 </div>
 
+<script src="i18n.js"></script>
 <script src="wayland-debug-tools.js"></script>
 <script>
 // ─── State ───────────────────────────────────────────────────────────────────
@@ -608,7 +610,7 @@ function renderLog() {
   const panel = document.getElementById('log-panel');
   panel.innerHTML = '';
   if (frag.childElementCount === 0) {
-    panel.innerHTML = '<div class="empty-msg">没有匹配的日志行</div>';
+    panel.innerHTML = `<div class="empty-msg">${t('noMatchLog')}</div>`;
   } else {
     panel.appendChild(frag);
   }
@@ -699,10 +701,10 @@ function resetApp() {
   highlightedUniqueIds.clear();
   document.getElementById('drop-zone').classList.remove('hidden');
   document.getElementById('filters-bar').classList.remove('visible');
-  document.getElementById('log-panel').innerHTML = '<div class="empty-msg">请先加载日志文件</div>';
-  document.getElementById('objects-list').innerHTML = '<div class="empty-msg">暂无数据</div>';
+  document.getElementById('log-panel').innerHTML = `<div class="empty-msg">${t('emptyLog')}</div>`;
+  document.getElementById('objects-list').innerHTML = `<div class="empty-msg">${t('noObjects')}</div>`;
   document.getElementById('globals-list').innerHTML = '';
-  document.getElementById('file-label').textContent = '未加载';
+  document.getElementById('file-label').textContent = t('fileLabel');
   ['stat-events','stat-requests','stat-comments'].forEach(id => document.getElementById(id).textContent = '0');
 }
 
@@ -732,7 +734,7 @@ document.addEventListener('drop', e => {
 // ─── Paste area ───────────────────────────────────────────────────────────────
 function loadFromPaste() {
   const text = document.getElementById('paste-area').value.trim();
-  if (text) loadLog(text, '(粘贴内容)');
+  if (text) loadLog(text, t('pastedContent'));
 }
 document.getElementById('paste-area').addEventListener('keydown', e => {
   if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) loadFromPaste();
@@ -825,6 +827,13 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
   document.documentElement.setAttribute('data-theme', next);
   localStorage.setItem('theme', next);
   updateThemeIcon(next);
+});
+
+// ─── i18n init & lang toggle ─────────────────────────────────────────────────
+applyI18n();
+
+document.getElementById('lang-toggle').addEventListener('click', () => {
+  setLanguage(currentLang === 'zh' ? 'en' : 'zh');
 });
 </script>
 </body>
