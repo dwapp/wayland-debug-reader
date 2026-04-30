@@ -176,7 +176,7 @@
 
     /* ── LEFT SIDEBAR ── */
     .sidebar {
-      width: 240px;
+      width: 340px;
       min-width: 180px;
       flex-shrink: 0;
       border-right: 1px solid var(--border);
@@ -218,6 +218,7 @@
       font-size: 11px;
       font-family: var(--font-mono);
       color: var(--text-dim);
+      white-space: nowrap;
     }
     .global-item span { color: var(--text); }
 
@@ -620,7 +621,7 @@ handle.addEventListener('mousedown', e => {
 });
 document.addEventListener('mousemove', e => {
   if (!resizing) return;
-  const w = Math.max(140, Math.min(500, startW + e.clientX - startX));
+  const w = Math.max(140, Math.min(800, startW + e.clientX - startX));
   sidebar.style.width = w + 'px';
 });
 document.addEventListener('mouseup', () => {
