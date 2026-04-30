@@ -1,6 +1,6 @@
 const re = {
     // New wayland log format: [timestamp] {Queue Name} obj#id.fn(...)
-    logLine: /^\[\d+[.,]\d{3}\] \{[^}]+\} (( -> )?([\w\[\]]+#\d+)\.(\w+)\((.*)\))$/,
+    logLine: /^\[(\d+[.,]\d{3})\] (?:\{[^}]+\} )?(( -> )?([\w\[\]]+#\d+)\.(\w+)\((.*)\))$/,
     sentMessage: /^ -> (.*)$/,
     message: /^([\w\[\]]+#\d+)\.(\w+)\((.*)\)$/,
     arguments: /^$/,
@@ -87,12 +87,13 @@ function parseLine(line) {
     if (!lineParts)
         return {type: "comment", parts: {comment: line}, rawText: line};
 
-    const message = lineParts[1];
+    const timestampStr = lineParts[1];
+    const message = lineParts[2];
     const sentMessage = message.match(re.sentMessage);
     const parsedMessage = parseMessage(sentMessage ? sentMessage[1] : message);
 
     const type = sentMessage ? "request" : "event"; // TODO: support server logs
-    return { type: type, parts: parsedMessage, rawText: line };
+    return { type: type, timestampStr: timestampStr, parts: parsedMessage, rawText: line };
 }
 
 var nextId = 1;

@@ -274,6 +274,7 @@
     .log-line.comment { background: var(--comment);  color: var(--text-muted); }
     .log-line.highlighted-line { background: var(--highlight) !important; border-left-color: var(--highlight-border) !important; }
 
+    .log-line .timestamp { color: var(--text-dim); margin-right: 6px; user-select: none; }
     .log-line .arrow   { color: #2aaf6f; margin-right: 6px; }
     .log-line .fn-name { color: #9de0e8; }
     .log-line .paren   { color: var(--text-dim); }
@@ -359,6 +360,7 @@
   <label class="toggle-label"><input type="checkbox" id="show-events" checked /> events</label>
   <label class="toggle-label"><input type="checkbox" id="show-requests" checked /> requests</label>
   <label class="toggle-label"><input type="checkbox" id="show-comments" checked /> comments</label>
+  <label class="toggle-label"><input type="checkbox" id="show-time" checked /> 时间</label>
   <label class="toggle-label"><input type="checkbox" id="highlight-only" /> 仅高亮对象</label>
 </div>
 
@@ -450,6 +452,7 @@ function renderLog() {
   const showReq = document.getElementById('show-requests').checked;
   const showCom = document.getElementById('show-comments').checked;
   const hlOnly  = document.getElementById('highlight-only').checked;
+  const showTime = document.getElementById('show-time').checked;
 
   const frag = document.createDocumentFragment();
   let countEv = 0, countReq = 0, countCom = 0;
@@ -513,9 +516,10 @@ function renderLog() {
     if (type === 'comment') {
       div.innerHTML = escHtml(rawText);
     } else {
+      const timeHtml = (showTime && line.timestampStr) ? `<span class="timestamp">[${line.timestampStr}]</span> ` : '';
       const arrow = type === 'request' ? '<span class="arrow">→</span>' : '';
       const argsHtml = parts.args.map(renderArg).join('<span class="arg-sep">, </span>');
-      div.innerHTML = `${arrow}${makeObjTag(parts.object)}<span class="fn-name">.${escHtml(parts.fn)}</span><span class="paren">(</span>${argsHtml}<span class="paren">)</span>`;
+      div.innerHTML = `${timeHtml}${arrow}${makeObjTag(parts.object)}<span class="fn-name">.${escHtml(parts.fn)}</span><span class="paren">(</span>${argsHtml}<span class="paren">)</span>`;
     }
 
     frag.appendChild(div);
@@ -655,7 +659,7 @@ document.getElementById('paste-area').addEventListener('keydown', e => {
 });
 
 // ─── Filter controls ──────────────────────────────────────────────────────────
-['show-events','show-requests','show-comments','highlight-only'].forEach(id => {
+['show-events','show-requests','show-comments','show-time','highlight-only'].forEach(id => {
   document.getElementById(id).addEventListener('change', renderLog);
 });
 let searchTimer;
