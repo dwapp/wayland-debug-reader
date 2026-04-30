@@ -361,6 +361,7 @@
   <label class="toggle-label"><input type="checkbox" id="show-requests" checked /> requests</label>
   <label class="toggle-label"><input type="checkbox" id="show-comments" checked /> comments</label>
   <label class="toggle-label"><input type="checkbox" id="show-time" checked /> 时间</label>
+  <label class="toggle-label" id="label-time-diff"><input type="checkbox" id="show-time-diff" /> 相对时间</label>
   <label class="toggle-label"><input type="checkbox" id="highlight-only" /> 仅高亮对象</label>
 </div>
 
@@ -453,6 +454,19 @@ function renderLog() {
   const showCom = document.getElementById('show-comments').checked;
   const hlOnly  = document.getElementById('highlight-only').checked;
   const showTime = document.getElementById('show-time').checked;
+  const showTimeDiff = document.getElementById('show-time-diff').checked;
+
+  document.getElementById('label-time-diff').style.display = showTime ? 'flex' : 'none';
+
+  let firstTimestamp = null;
+  if (showTime && showTimeDiff) {
+    for (const line of appState.parsedLines) {
+      if (line.timestamp !== undefined && !isNaN(line.timestamp)) {
+        firstTimestamp = line.timestamp;
+        break;
+      }
+    }
+  }
 
   const frag = document.createDocumentFragment();
   let countEv = 0, countReq = 0, countCom = 0;
@@ -516,7 +530,15 @@ function renderLog() {
     if (type === 'comment') {
       div.innerHTML = escHtml(rawText);
     } else {
-      const timeHtml = (showTime && line.timestampStr) ? `<span class="timestamp">[${line.timestampStr}]</span> ` : '';
+      let timeHtml = '';
+      if (showTime && line.timestampStr) {
+        let tsText = line.timestampStr;
+        if (showTimeDiff && firstTimestamp !== null && line.timestamp !== undefined && !isNaN(line.timestamp)) {
+          let diff = line.timestamp - firstTimestamp;
+          tsText = '+' + diff.toFixed(3);
+        }
+        timeHtml = `<span class="timestamp">[${tsText}]</span> `;
+      }
       const arrow = type === 'request' ? '<span class="arrow">→</span>' : '';
       const argsHtml = parts.args.map(renderArg).join('<span class="arg-sep">, </span>');
       div.innerHTML = `${timeHtml}${arrow}${makeObjTag(parts.object)}<span class="fn-name">.${escHtml(parts.fn)}</span><span class="paren">(</span>${argsHtml}<span class="paren">)</span>`;
@@ -659,7 +681,7 @@ document.getElementById('paste-area').addEventListener('keydown', e => {
 });
 
 // ─── Filter controls ──────────────────────────────────────────────────────────
-['show-events','show-requests','show-comments','show-time','highlight-only'].forEach(id => {
+['show-events','show-requests','show-comments','show-time','show-time-diff','highlight-only'].forEach(id => {
   document.getElementById(id).addEventListener('change', renderLog);
 });
 let searchTimer;
