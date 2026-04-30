@@ -321,7 +321,8 @@
     <button class="btn primary" onclick="document.getElementById('file-input').click()">📂 选择文件</button>
     <input type="file" id="file-input" accept=".log,.txt,*" />
   </div>
-  <textarea id="paste-area" class="paste-area" placeholder="或者直接粘贴日志内容到这里，然后按 Ctrl+Enter …"></textarea>
+  <textarea id="paste-area" class="paste-area" placeholder="或者直接粘贴日志内容到这里…"></textarea>
+  <button class="btn primary" id="paste-load-btn" onclick="loadFromPaste()">▶ 加载日志</button>
 </div>
 
 <!-- HEADER -->
@@ -585,11 +586,12 @@ document.addEventListener('drop', e => {
 });
 
 // ─── Paste area ───────────────────────────────────────────────────────────────
+function loadFromPaste() {
+  const text = document.getElementById('paste-area').value.trim();
+  if (text) loadLog(text, '(粘贴内容)');
+}
 document.getElementById('paste-area').addEventListener('keydown', e => {
-  if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
-    const text = e.target.value.trim();
-    if (text) loadLog(text, '(粘贴内容)');
-  }
+  if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) loadFromPaste();
 });
 
 // ─── Filter controls ──────────────────────────────────────────────────────────
