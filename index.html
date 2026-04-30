@@ -124,6 +124,7 @@
     }
 
     /* ── DROP OVERLAY ── */
+    .main { position: relative; }
     #drop-zone {
       position: absolute;
       inset: 0;
@@ -312,19 +313,6 @@
 </head>
 <body>
 
-<!-- DROP / LOAD OVERLAY -->
-<div id="drop-zone">
-  <div class="drop-icon">🌊</div>
-  <div class="drop-title">Wayland Debug Reader</div>
-  <div class="drop-sub">拖拽日志文件到此处，或选择文件 / 粘贴文本</div>
-  <div class="drop-actions">
-    <button class="btn primary" onclick="document.getElementById('file-input').click()">📂 选择文件</button>
-    <input type="file" id="file-input" accept=".log,.txt,*" />
-  </div>
-  <textarea id="paste-area" class="paste-area" placeholder="或者直接粘贴日志内容到这里…"></textarea>
-  <button class="btn primary" id="paste-load-btn" onclick="loadFromPaste()">▶ 加载日志</button>
-</div>
-
 <!-- HEADER -->
 <header>
   <h1>⚡ Wayland Debug Reader</h1>
@@ -340,6 +328,7 @@
   </a>
 </header>
 
+
 <!-- FILTERS -->
 <div class="filters">
   <input type="search" id="search-input" placeholder="搜索接口名、方法名、参数…" />
@@ -351,6 +340,18 @@
 
 <!-- MAIN -->
 <div class="main">
+  <!-- DROP / LOAD OVERLAY -->
+  <div id="drop-zone">
+    <div class="drop-icon">🌊</div>
+    <div class="drop-title">Wayland Debug Reader</div>
+    <div class="drop-sub">拖拽日志文件到此处，或选择文件 / 粘贴文本</div>
+    <div class="drop-actions">
+      <button class="btn primary" onclick="document.getElementById('file-input').click()">📂 选择文件</button>
+      <input type="file" id="file-input" accept=".log,.txt,*" />
+    </div>
+    <textarea id="paste-area" class="paste-area" placeholder="或者直接粘贴日志内容到这里…"></textarea>
+    <button class="btn primary" id="paste-load-btn" onclick="loadFromPaste()">▶ 加载日志</button>
+  </div>
   <!-- LEFT SIDEBAR -->
   <div class="sidebar" id="sidebar">
     <div class="sidebar-section" id="objects-section" style="flex:1;overflow-y:auto">
