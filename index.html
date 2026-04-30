@@ -438,14 +438,15 @@ function renderLog() {
 
     // highlight-only filter
     if (hlOnly && highlightedUniqueId) {
-      if (type !== 'event' && type !== 'request') continue;
-      const obj = parts.object;
-      const inObj = obj && obj.uniqueId === highlightedUniqueId;
-      const inArgs = parts.args && parts.args.some(a =>
-        (a.type === 'object' && a.uniqueId === highlightedUniqueId) ||
-        (a.type === 'new'    && a.object && a.object.uniqueId === highlightedUniqueId)
-      );
-      if (!inObj && !inArgs) continue;
+      if (type === 'event' || type === 'request') {
+        const obj = parts.object;
+        const inObj = obj && obj.uniqueId === highlightedUniqueId;
+        const inArgs = parts.args && parts.args.some(a =>
+          (a.type === 'object' && a.uniqueId === highlightedUniqueId) ||
+          (a.type === 'new'    && a.object && a.object.uniqueId === highlightedUniqueId)
+        );
+        if (!inObj && !inArgs) continue;
+      }
     }
 
     // search filter
