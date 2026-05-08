@@ -1,0 +1,482 @@
+{
+  "wl_display": {
+    "sync": [
+      "callback"
+    ],
+    "get_registry": [
+      "registry"
+    ],
+    "error": [
+      "object_id",
+      "code",
+      "message"
+    ],
+    "delete_id": [
+      "id"
+    ]
+  },
+  "wl_registry": {
+    "bind": [
+      "name",
+      "interface",
+      "version",
+      "id"
+    ],
+    "global": [
+      "name",
+      "interface",
+      "version"
+    ],
+    "global_remove": [
+      "name"
+    ]
+  },
+  "wl_callback": {
+    "done": [
+      "callback_data"
+    ]
+  },
+  "wl_compositor": {
+    "create_surface": [
+      "id"
+    ],
+    "create_region": [
+      "id"
+    ]
+  },
+  "wl_shm_pool": {
+    "create_buffer": [
+      "id",
+      "offset",
+      "width",
+      "height",
+      "stride",
+      "format"
+    ],
+    "destroy": [],
+    "resize": [
+      "size"
+    ]
+  },
+  "wl_shm": {
+    "create_pool": [
+      "id",
+      "fd",
+      "size"
+    ],
+    "release": [],
+    "format": [
+      "format"
+    ]
+  },
+  "wl_buffer": {
+    "destroy": [],
+    "release": []
+  },
+  "wl_data_offer": {
+    "accept": [
+      "serial",
+      "mime_type"
+    ],
+    "receive": [
+      "mime_type",
+      "fd"
+    ],
+    "destroy": [],
+    "finish": [],
+    "set_actions": [
+      "dnd_actions",
+      "preferred_action"
+    ],
+    "offer": [
+      "mime_type"
+    ],
+    "source_actions": [
+      "source_actions"
+    ],
+    "action": [
+      "dnd_action"
+    ]
+  },
+  "wl_data_source": {
+    "offer": [
+      "mime_type"
+    ],
+    "destroy": [],
+    "set_actions": [
+      "dnd_actions"
+    ],
+    "target": [
+      "mime_type"
+    ],
+    "send": [
+      "mime_type",
+      "fd"
+    ],
+    "cancelled": [],
+    "dnd_drop_performed": [],
+    "dnd_finished": [],
+    "action": [
+      "dnd_action"
+    ]
+  },
+  "wl_data_device": {
+    "start_drag": [
+      "source",
+      "origin",
+      "icon",
+      "serial"
+    ],
+    "set_selection": [
+      "source",
+      "serial"
+    ],
+    "release": [],
+    "data_offer": [
+      "id"
+    ],
+    "enter": [
+      "serial",
+      "surface",
+      "x",
+      "y",
+      "id"
+    ],
+    "leave": [],
+    "motion": [
+      "time",
+      "x",
+      "y"
+    ],
+    "drop": [],
+    "selection": [
+      "id"
+    ]
+  },
+  "wl_data_device_manager": {
+    "create_data_source": [
+      "id"
+    ],
+    "get_data_device": [
+      "id",
+      "seat"
+    ]
+  },
+  "wl_shell": {
+    "get_shell_surface": [
+      "id",
+      "surface"
+    ]
+  },
+  "wl_shell_surface": {
+    "pong": [
+      "serial"
+    ],
+    "move": [
+      "seat",
+      "serial"
+    ],
+    "resize": [
+      "seat",
+      "serial",
+      "edges"
+    ],
+    "set_toplevel": [],
+    "set_transient": [
+      "parent",
+      "x",
+      "y",
+      "flags"
+    ],
+    "set_fullscreen": [
+      "method",
+      "framerate",
+      "output"
+    ],
+    "set_popup": [
+      "seat",
+      "serial",
+      "parent",
+      "x",
+      "y",
+      "flags"
+    ],
+    "set_maximized": [
+      "output"
+    ],
+    "set_title": [
+      "title"
+    ],
+    "set_class": [
+      "class_"
+    ],
+    "ping": [
+      "serial"
+    ],
+    "configure": [
+      "edges",
+      "width",
+      "height"
+    ],
+    "popup_done": []
+  },
+  "wl_surface": {
+    "destroy": [],
+    "attach": [
+      "buffer",
+      "x",
+      "y"
+    ],
+    "damage": [
+      "x",
+      "y",
+      "width",
+      "height"
+    ],
+    "frame": [
+      "callback"
+    ],
+    "set_opaque_region": [
+      "region"
+    ],
+    "set_input_region": [
+      "region"
+    ],
+    "commit": [],
+    "set_buffer_transform": [
+      "transform"
+    ],
+    "set_buffer_scale": [
+      "scale"
+    ],
+    "damage_buffer": [
+      "x",
+      "y",
+      "width",
+      "height"
+    ],
+    "offset": [
+      "x",
+      "y"
+    ],
+    "enter": [
+      "output"
+    ],
+    "leave": [
+      "output"
+    ],
+    "preferred_buffer_scale": [
+      "factor"
+    ],
+    "preferred_buffer_transform": [
+      "transform"
+    ]
+  },
+  "wl_seat": {
+    "get_pointer": [
+      "id"
+    ],
+    "get_keyboard": [
+      "id"
+    ],
+    "get_touch": [
+      "id"
+    ],
+    "release": [],
+    "capabilities": [
+      "capabilities"
+    ],
+    "name": [
+      "name"
+    ]
+  },
+  "wl_pointer": {
+    "set_cursor": [
+      "serial",
+      "surface",
+      "hotspot_x",
+      "hotspot_y"
+    ],
+    "release": [],
+    "enter": [
+      "serial",
+      "surface",
+      "surface_x",
+      "surface_y"
+    ],
+    "leave": [
+      "serial",
+      "surface"
+    ],
+    "motion": [
+      "time",
+      "surface_x",
+      "surface_y"
+    ],
+    "button": [
+      "serial",
+      "time",
+      "button",
+      "state"
+    ],
+    "axis": [
+      "time",
+      "axis",
+      "value"
+    ],
+    "frame": [],
+    "axis_source": [
+      "axis_source"
+    ],
+    "axis_stop": [
+      "time",
+      "axis"
+    ],
+    "axis_discrete": [
+      "axis",
+      "discrete"
+    ],
+    "axis_value120": [
+      "axis",
+      "value120"
+    ],
+    "axis_relative_direction": [
+      "axis",
+      "direction"
+    ]
+  },
+  "wl_keyboard": {
+    "release": [],
+    "keymap": [
+      "format",
+      "fd",
+      "size"
+    ],
+    "enter": [
+      "serial",
+      "surface",
+      "keys"
+    ],
+    "leave": [
+      "serial",
+      "surface"
+    ],
+    "key": [
+      "serial",
+      "time",
+      "key",
+      "state"
+    ],
+    "modifiers": [
+      "serial",
+      "mods_depressed",
+      "mods_latched",
+      "mods_locked",
+      "group"
+    ],
+    "repeat_info": [
+      "rate",
+      "delay"
+    ]
+  },
+  "wl_touch": {
+    "release": [],
+    "down": [
+      "serial",
+      "time",
+      "surface",
+      "id",
+      "x",
+      "y"
+    ],
+    "up": [
+      "serial",
+      "time",
+      "id"
+    ],
+    "motion": [
+      "time",
+      "id",
+      "x",
+      "y"
+    ],
+    "frame": [],
+    "cancel": [],
+    "shape": [
+      "id",
+      "major",
+      "minor"
+    ],
+    "orientation": [
+      "id",
+      "orientation"
+    ]
+  },
+  "wl_output": {
+    "release": [],
+    "geometry": [
+      "x",
+      "y",
+      "physical_width",
+      "physical_height",
+      "subpixel",
+      "make",
+      "model",
+      "transform"
+    ],
+    "mode": [
+      "flags",
+      "width",
+      "height",
+      "refresh"
+    ],
+    "done": [],
+    "scale": [
+      "factor"
+    ],
+    "name": [
+      "name"
+    ],
+    "description": [
+      "description"
+    ]
+  },
+  "wl_region": {
+    "destroy": [],
+    "add": [
+      "x",
+      "y",
+      "width",
+      "height"
+    ],
+    "subtract": [
+      "x",
+      "y",
+      "width",
+      "height"
+    ]
+  },
+  "wl_subcompositor": {
+    "destroy": [],
+    "get_subsurface": [
+      "id",
+      "surface",
+      "parent"
+    ]
+  },
+  "wl_subsurface": {
+    "destroy": [],
+    "set_position": [
+      "x",
+      "y"
+    ],
+    "place_above": [
+      "sibling"
+    ],
+    "place_below": [
+      "sibling"
+    ],
+    "set_sync": [],
+    "set_desync": []
+  }
+}
