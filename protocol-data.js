@@ -2,13 +2,24 @@
 // Loads Wayland protocol definitions (pre-converted from XML to JSON) and
 // provides argument name lookup for rendering named parameters in log lines.
 //
-// Data format: { "interface_name": { "method_name": ["arg1", "arg2", ...] } }
+// Data format: { "interface_name": { "method_name": ["arg1", "arg2", ...] }
+//
+// Two loading modes:
+//   1. Sync: include all-protocols.js via <script> before this file.
+//      The global ALL_PROTOCOL_DATA will be auto-merged on load.
+//   2. Async: call loadProtocolJSON(url) to fetch a JSON file.
 
 /**
  * Global registry of protocol argument definitions.
  * Multiple protocol files can be merged into this object.
  */
 const protocolRegistry = {};
+
+// Auto-merge embedded data if present (loaded via <script src="protocols/all-protocols.js">)
+if (typeof ALL_PROTOCOL_DATA !== 'undefined') {
+  Object.assign(protocolRegistry, ALL_PROTOCOL_DATA);
+  console.log(`[protocol-data] Loaded ${Object.keys(ALL_PROTOCOL_DATA).length} interfaces (embedded)`);
+}
 
 /**
  * Load a protocol JSON file and merge it into the global registry.
