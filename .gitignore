@@ -13,3 +13,6 @@ devenv.local.nix
 
 # qtc
 .qtcreator/
+
+# protocols build artifacts (regenerate with: cd protocols && bash build-all.sh)
+protocols/all-protocols.json

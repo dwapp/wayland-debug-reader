@@ -52,9 +52,10 @@
 
 ### 3.5 协议参数显示 (Protocol Argument Names)
 *   **功能描述**：在事件/请求的参数列表中显示参数名，如 `repeat_info(rate: 25, delay: 600)`。
-*   **数据来源**：通过 `loadProtocolJSON()` 加载由 `protocols/convert-xml.py` 生成的 JSON 文件（如 `wayland.json`）。
-*   **特殊逻辑**：对于 `wl_registry.bind` 等具有“未指定接口 (untyped new_id)”的参数，`convert-xml.py` 会将其扩展为 3 个显示参数（interface, version, id），以匹配 libwayland 的调试输出格式。
-*   **加载方式**：在 `index.html` 初始化时调用 `loadProtocolJSON('protocols/wayland.json')`。
+*   **数据来源**：`protocols/build-all.sh` 批量扫描系统协议目录，调用 `convert-xml.py` 生成 `protocols/all-protocols.json`，再封装为 `protocols/all-protocols.js`（`const ALL_PROTOCOL_DATA = {...};`）。
+*   **加载方式**：通过 `<script src="protocols/all-protocols.js">` **同步**加载，`protocol-data.js` 在初始化时自动检测并合并该全局变量。**不能用异步 fetch**，否则 `renderLog()` 会在数据到达前执行，导致参数名不显示。
+*   **特殊逻辑**：对于 `wl_registry.bind` 等具有"未指定接口 (untyped new_id)"的参数，`convert-xml.py` 会将其扩展为 3 个显示参数（interface, version, id），以匹配 libwayland 的调试输出格式。
+*   **重新生成**：修改系统协议后，在 `protocols/` 目录下运行 `bash build-all.sh` 即可更新。
 
 ## 4. 性能边界 (Performance Limitations)
 
