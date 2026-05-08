@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+# build-all.sh — Batch-convert all Wayland protocol XML files to a single JSON.
+#
+# Usage:
+#   cd protocols/
+#   bash build-all.sh                # uses default search dirs
+#   bash build-all.sh -o out.json    # custom output file
+#
+# Search directories (edit SEARCH_DIRS to add more):
+SEARCH_DIRS=(
+    /usr/share/wayland/
+    /usr/share/wayland-protocols/
+    /usr/share/treeland-protocols/
+)
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+CONVERT_PY="$SCRIPT_DIR/convert-xml.py"
+OUTPUT="$SCRIPT_DIR/all-protocols.json"
+
+# --- Parse arguments ---
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -o|--output) OUTPUT="$2"; shift 2 ;;
+        -h|--help)
+            echo "Usage: $0 [-o output.json]"
+            exit 0
+            ;;
+        *) echo "Unknown option: $1"; exit 1 ;;
+    esac
+done
+
+# --- Collect all XML files ---
+xml_files=()
+for dir in "${SEARCH_DIRS[@]}"; do
+    if [[ -d "$dir" ]]; then
+        while IFS= read -r -d '' f; do
+            xml_files+=("$f")
+        done < <(find "$dir" -name "*.xml" -print0 | sort -z)
+    else
+        echo "[warn] Directory not found, skipping: $dir" >&2
+    fi
+done
+
+if [[ ${#xml_files[@]} -eq 0 ]]; then
+    echo "[error] No XML files found in: ${SEARCH_DIRS[*]}" >&2
+    exit 1
+fi
+
+echo "[info] Found ${#xml_files[@]} XML files, converting..." >&2
+
+# --- Run converter and write output ---
+python3 "$CONVERT_PY" "${xml_files[@]}" > "$OUTPUT"
+status=$?
+
+if [[ $status -eq 0 ]]; then
+    iface_count=$(python3 -c "import json,sys; d=json.load(open('$OUTPUT')); print(len(d))" 2>/dev/null || echo "?")
+    echo "[info] Done → $OUTPUT ($iface_count interfaces)" >&2
+else
+    echo "[error] convert-xml.py failed (exit $status)" >&2
+    exit $status
+fi

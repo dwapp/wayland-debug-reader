@@ -1,0 +1,3355 @@
+{
+  "wl_display": {
+    "sync": [
+      "callback"
+    ],
+    "get_registry": [
+      "registry"
+    ],
+    "error": [
+      "object_id",
+      "code",
+      "message"
+    ],
+    "delete_id": [
+      "id"
+    ]
+  },
+  "wl_registry": {
+    "bind": [
+      "name",
+      "interface",
+      "version",
+      "id"
+    ],
+    "global": [
+      "name",
+      "interface",
+      "version"
+    ],
+    "global_remove": [
+      "name"
+    ]
+  },
+  "wl_callback": {
+    "done": [
+      "callback_data"
+    ]
+  },
+  "wl_compositor": {
+    "create_surface": [
+      "id"
+    ],
+    "create_region": [
+      "id"
+    ]
+  },
+  "wl_shm_pool": {
+    "create_buffer": [
+      "id",
+      "offset",
+      "width",
+      "height",
+      "stride",
+      "format"
+    ],
+    "destroy": [],
+    "resize": [
+      "size"
+    ]
+  },
+  "wl_shm": {
+    "create_pool": [
+      "id",
+      "fd",
+      "size"
+    ],
+    "release": [],
+    "format": [
+      "format"
+    ]
+  },
+  "wl_buffer": {
+    "destroy": [],
+    "release": []
+  },
+  "wl_data_offer": {
+    "accept": [
+      "serial",
+      "mime_type"
+    ],
+    "receive": [
+      "mime_type",
+      "fd"
+    ],
+    "destroy": [],
+    "finish": [],
+    "set_actions": [
+      "dnd_actions",
+      "preferred_action"
+    ],
+    "offer": [
+      "mime_type"
+    ],
+    "source_actions": [
+      "source_actions"
+    ],
+    "action": [
+      "dnd_action"
+    ]
+  },
+  "wl_data_source": {
+    "offer": [
+      "mime_type"
+    ],
+    "destroy": [],
+    "set_actions": [
+      "dnd_actions"
+    ],
+    "target": [
+      "mime_type"
+    ],
+    "send": [
+      "mime_type",
+      "fd"
+    ],
+    "cancelled": [],
+    "dnd_drop_performed": [],
+    "dnd_finished": [],
+    "action": [
+      "dnd_action"
+    ]
+  },
+  "wl_data_device": {
+    "start_drag": [
+      "source",
+      "origin",
+      "icon",
+      "serial"
+    ],
+    "set_selection": [
+      "source",
+      "serial"
+    ],
+    "release": [],
+    "data_offer": [
+      "id"
+    ],
+    "enter": [
+      "serial",
+      "surface",
+      "x",
+      "y",
+      "id"
+    ],
+    "leave": [],
+    "motion": [
+      "time",
+      "x",
+      "y"
+    ],
+    "drop": [],
+    "selection": [
+      "id"
+    ]
+  },
+  "wl_data_device_manager": {
+    "create_data_source": [
+      "id"
+    ],
+    "get_data_device": [
+      "id",
+      "seat"
+    ]
+  },
+  "wl_shell": {
+    "get_shell_surface": [
+      "id",
+      "surface"
+    ]
+  },
+  "wl_shell_surface": {
+    "pong": [
+      "serial"
+    ],
+    "move": [
+      "seat",
+      "serial"
+    ],
+    "resize": [
+      "seat",
+      "serial",
+      "edges"
+    ],
+    "set_toplevel": [],
+    "set_transient": [
+      "parent",
+      "x",
+      "y",
+      "flags"
+    ],
+    "set_fullscreen": [
+      "method",
+      "framerate",
+      "output"
+    ],
+    "set_popup": [
+      "seat",
+      "serial",
+      "parent",
+      "x",
+      "y",
+      "flags"
+    ],
+    "set_maximized": [
+      "output"
+    ],
+    "set_title": [
+      "title"
+    ],
+    "set_class": [
+      "class_"
+    ],
+    "ping": [
+      "serial"
+    ],
+    "configure": [
+      "edges",
+      "width",
+      "height"
+    ],
+    "popup_done": []
+  },
+  "wl_surface": {
+    "destroy": [],
+    "attach": [
+      "buffer",
+      "x",
+      "y"
+    ],
+    "damage": [
+      "x",
+      "y",
+      "width",
+      "height"
+    ],
+    "frame": [
+      "callback"
+    ],
+    "set_opaque_region": [
+      "region"
+    ],
+    "set_input_region": [
+      "region"
+    ],
+    "commit": [],
+    "set_buffer_transform": [
+      "transform"
+    ],
+    "set_buffer_scale": [
+      "scale"
+    ],
+    "damage_buffer": [
+      "x",
+      "y",
+      "width",
+      "height"
+    ],
+    "offset": [
+      "x",
+      "y"
+    ],
+    "enter": [
+      "output"
+    ],
+    "leave": [
+      "output"
+    ],
+    "preferred_buffer_scale": [
+      "factor"
+    ],
+    "preferred_buffer_transform": [
+      "transform"
+    ]
+  },
+  "wl_seat": {
+    "get_pointer": [
+      "id"
+    ],
+    "get_keyboard": [
+      "id"
+    ],
+    "get_touch": [
+      "id"
+    ],
+    "release": [],
+    "capabilities": [
+      "capabilities"
+    ],
+    "name": [
+      "name"
+    ]
+  },
+  "wl_pointer": {
+    "set_cursor": [
+      "serial",
+      "surface",
+      "hotspot_x",
+      "hotspot_y"
+    ],
+    "release": [],
+    "enter": [
+      "serial",
+      "surface",
+      "surface_x",
+      "surface_y"
+    ],
+    "leave": [
+      "serial",
+      "surface"
+    ],
+    "motion": [
+      "time",
+      "surface_x",
+      "surface_y"
+    ],
+    "button": [
+      "serial",
+      "time",
+      "button",
+      "state"
+    ],
+    "axis": [
+      "time",
+      "axis",
+      "value"
+    ],
+    "frame": [],
+    "axis_source": [
+      "axis_source"
+    ],
+    "axis_stop": [
+      "time",
+      "axis"
+    ],
+    "axis_discrete": [
+      "axis",
+      "discrete"
+    ],
+    "axis_value120": [
+      "axis",
+      "value120"
+    ],
+    "axis_relative_direction": [
+      "axis",
+      "direction"
+    ]
+  },
+  "wl_keyboard": {
+    "release": [],
+    "keymap": [
+      "format",
+      "fd",
+      "size"
+    ],
+    "enter": [
+      "serial",
+      "surface",
+      "keys"
+    ],
+    "leave": [
+      "serial",
+      "surface"
+    ],
+    "key": [
+      "serial",
+      "time",
+      "key",
+      "state"
+    ],
+    "modifiers": [
+      "serial",
+      "mods_depressed",
+      "mods_latched",
+      "mods_locked",
+      "group"
+    ],
+    "repeat_info": [
+      "rate",
+      "delay"
+    ]
+  },
+  "wl_touch": {
+    "release": [],
+    "down": [
+      "serial",
+      "time",
+      "surface",
+      "id",
+      "x",
+      "y"
+    ],
+    "up": [
+      "serial",
+      "time",
+      "id"
+    ],
+    "motion": [
+      "time",
+      "id",
+      "x",
+      "y"
+    ],
+    "frame": [],
+    "cancel": [],
+    "shape": [
+      "id",
+      "major",
+      "minor"
+    ],
+    "orientation": [
+      "id",
+      "orientation"
+    ]
+  },
+  "wl_output": {
+    "release": [],
+    "geometry": [
+      "x",
+      "y",
+      "physical_width",
+      "physical_height",
+      "subpixel",
+      "make",
+      "model",
+      "transform"
+    ],
+    "mode": [
+      "flags",
+      "width",
+      "height",
+      "refresh"
+    ],
+    "done": [],
+    "scale": [
+      "factor"
+    ],
+    "name": [
+      "name"
+    ],
+    "description": [
+      "description"
+    ]
+  },
+  "wl_region": {
+    "destroy": [],
+    "add": [
+      "x",
+      "y",
+      "width",
+      "height"
+    ],
+    "subtract": [
+      "x",
+      "y",
+      "width",
+      "height"
+    ]
+  },
+  "wl_subcompositor": {
+    "destroy": [],
+    "get_subsurface": [
+      "id",
+      "surface",
+      "parent"
+    ]
+  },
+  "wl_subsurface": {
+    "destroy": [],
+    "set_position": [
+      "x",
+      "y"
+    ],
+    "place_above": [
+      "sibling"
+    ],
+    "place_below": [
+      "sibling"
+    ],
+    "set_sync": [],
+    "set_desync": []
+  },
+  "zwp_linux_dmabuf_v1": {
+    "destroy": [],
+    "create_params": [
+      "params_id"
+    ],
+    "get_default_feedback": [
+      "id"
+    ],
+    "get_surface_feedback": [
+      "id",
+      "surface"
+    ],
+    "format": [
+      "format"
+    ],
+    "modifier": [
+      "format",
+      "modifier_hi",
+      "modifier_lo"
+    ]
+  },
+  "zwp_linux_buffer_params_v1": {
+    "destroy": [],
+    "add": [
+      "fd",
+      "plane_idx",
+      "offset",
+      "stride",
+      "modifier_hi",
+      "modifier_lo"
+    ],
+    "create": [
+      "width",
+      "height",
+      "format",
+      "flags"
+    ],
+    "create_immed": [
+      "buffer_id",
+      "width",
+      "height",
+      "format",
+      "flags"
+    ],
+    "created": [
+      "buffer"
+    ],
+    "failed": []
+  },
+  "zwp_linux_dmabuf_feedback_v1": {
+    "destroy": [],
+    "done": [],
+    "format_table": [
+      "fd",
+      "size"
+    ],
+    "main_device": [
+      "device"
+    ],
+    "tranche_done": [],
+    "tranche_target_device": [
+      "device"
+    ],
+    "tranche_formats": [
+      "indices"
+    ],
+    "tranche_flags": [
+      "flags"
+    ]
+  },
+  "wp_presentation": {
+    "destroy": [],
+    "feedback": [
+      "surface",
+      "callback"
+    ],
+    "clock_id": [
+      "clk_id"
+    ]
+  },
+  "wp_presentation_feedback": {
+    "sync_output": [
+      "output"
+    ],
+    "presented": [
+      "tv_sec_hi",
+      "tv_sec_lo",
+      "tv_nsec",
+      "refresh",
+      "seq_hi",
+      "seq_lo",
+      "flags"
+    ],
+    "discarded": []
+  },
+  "zwp_tablet_manager_v2": {
+    "get_tablet_seat": [
+      "tablet_seat",
+      "seat"
+    ],
+    "destroy": []
+  },
+  "zwp_tablet_seat_v2": {
+    "destroy": [],
+    "tablet_added": [
+      "id"
+    ],
+    "tool_added": [
+      "id"
+    ],
+    "pad_added": [
+      "id"
+    ]
+  },
+  "zwp_tablet_tool_v2": {
+    "set_cursor": [
+      "serial",
+      "surface",
+      "hotspot_x",
+      "hotspot_y"
+    ],
+    "destroy": [],
+    "type": [
+      "tool_type"
+    ],
+    "hardware_serial": [
+      "hardware_serial_hi",
+      "hardware_serial_lo"
+    ],
+    "hardware_id_wacom": [
+      "hardware_id_hi",
+      "hardware_id_lo"
+    ],
+    "capability": [
+      "capability"
+    ],
+    "done": [],
+    "removed": [],
+    "proximity_in": [
+      "serial",
+      "tablet",
+      "surface"
+    ],
+    "proximity_out": [],
+    "down": [
+      "serial"
+    ],
+    "up": [],
+    "motion": [
+      "x",
+      "y"
+    ],
+    "pressure": [
+      "pressure"
+    ],
+    "distance": [
+      "distance"
+    ],
+    "tilt": [
+      "tilt_x",
+      "tilt_y"
+    ],
+    "rotation": [
+      "degrees"
+    ],
+    "slider": [
+      "position"
+    ],
+    "wheel": [
+      "degrees",
+      "clicks"
+    ],
+    "button": [
+      "serial",
+      "button",
+      "state"
+    ],
+    "frame": [
+      "time"
+    ]
+  },
+  "zwp_tablet_v2": {
+    "destroy": [],
+    "name": [
+      "name"
+    ],
+    "id": [
+      "vid",
+      "pid"
+    ],
+    "path": [
+      "path"
+    ],
+    "done": [],
+    "removed": []
+  },
+  "zwp_tablet_pad_ring_v2": {
+    "set_feedback": [
+      "description",
+      "serial"
+    ],
+    "destroy": [],
+    "source": [
+      "source"
+    ],
+    "angle": [
+      "degrees"
+    ],
+    "stop": [],
+    "frame": [
+      "time"
+    ]
+  },
+  "zwp_tablet_pad_strip_v2": {
+    "set_feedback": [
+      "description",
+      "serial"
+    ],
+    "destroy": [],
+    "source": [
+      "source"
+    ],
+    "position": [
+      "position"
+    ],
+    "stop": [],
+    "frame": [
+      "time"
+    ]
+  },
+  "zwp_tablet_pad_group_v2": {
+    "destroy": [],
+    "buttons": [
+      "buttons"
+    ],
+    "ring": [
+      "ring"
+    ],
+    "strip": [
+      "strip"
+    ],
+    "modes": [
+      "modes"
+    ],
+    "done": [],
+    "mode_switch": [
+      "time",
+      "serial",
+      "mode"
+    ]
+  },
+  "zwp_tablet_pad_v2": {
+    "set_feedback": [
+      "button",
+      "description",
+      "serial"
+    ],
+    "destroy": [],
+    "group": [
+      "pad_group"
+    ],
+    "path": [
+      "path"
+    ],
+    "buttons": [
+      "buttons"
+    ],
+    "done": [],
+    "button": [
+      "time",
+      "button",
+      "state"
+    ],
+    "enter": [
+      "serial",
+      "tablet",
+      "surface"
+    ],
+    "leave": [
+      "serial",
+      "surface"
+    ],
+    "removed": []
+  },
+  "zwp_tablet_pad_dial_v2": {
+    "set_feedback": [
+      "description",
+      "serial"
+    ],
+    "destroy": [],
+    "delta": [
+      "value120"
+    ],
+    "frame": [
+      "time"
+    ]
+  },
+  "wp_viewporter": {
+    "destroy": [],
+    "get_viewport": [
+      "id",
+      "surface"
+    ]
+  },
+  "wp_viewport": {
+    "destroy": [],
+    "set_source": [
+      "x",
+      "y",
+      "width",
+      "height"
+    ],
+    "set_destination": [
+      "width",
+      "height"
+    ]
+  },
+  "xdg_wm_base": {
+    "destroy": [],
+    "create_positioner": [
+      "id"
+    ],
+    "get_xdg_surface": [
+      "id",
+      "surface"
+    ],
+    "pong": [
+      "serial"
+    ],
+    "ping": [
+      "serial"
+    ]
+  },
+  "xdg_positioner": {
+    "destroy": [],
+    "set_size": [
+      "width",
+      "height"
+    ],
+    "set_anchor_rect": [
+      "x",
+      "y",
+      "width",
+      "height"
+    ],
+    "set_anchor": [
+      "anchor"
+    ],
+    "set_gravity": [
+      "gravity"
+    ],
+    "set_constraint_adjustment": [
+      "constraint_adjustment"
+    ],
+    "set_offset": [
+      "x",
+      "y"
+    ],
+    "set_reactive": [],
+    "set_parent_size": [
+      "parent_width",
+      "parent_height"
+    ],
+    "set_parent_configure": [
+      "serial"
+    ]
+  },
+  "xdg_surface": {
+    "destroy": [],
+    "set_parent": [
+      "parent"
+    ],
+    "set_title": [
+      "title"
+    ],
+    "set_app_id": [
+      "app_id"
+    ],
+    "show_window_menu": [
+      "seat",
+      "serial",
+      "x",
+      "y"
+    ],
+    "move": [
+      "seat",
+      "serial"
+    ],
+    "resize": [
+      "seat",
+      "serial",
+      "edges"
+    ],
+    "ack_configure": [
+      "serial"
+    ],
+    "set_window_geometry": [
+      "x",
+      "y",
+      "width",
+      "height"
+    ],
+    "set_maximized": [],
+    "unset_maximized": [],
+    "set_fullscreen": [
+      "output"
+    ],
+    "unset_fullscreen": [],
+    "set_minimized": [],
+    "configure": [
+      "width",
+      "height",
+      "states",
+      "serial"
+    ],
+    "close": []
+  },
+  "xdg_toplevel": {
+    "destroy": [],
+    "set_parent": [
+      "parent"
+    ],
+    "set_title": [
+      "title"
+    ],
+    "set_app_id": [
+      "app_id"
+    ],
+    "show_window_menu": [
+      "seat",
+      "serial",
+      "x",
+      "y"
+    ],
+    "move": [
+      "seat",
+      "serial"
+    ],
+    "resize": [
+      "seat",
+      "serial",
+      "edges"
+    ],
+    "set_max_size": [
+      "width",
+      "height"
+    ],
+    "set_min_size": [
+      "width",
+      "height"
+    ],
+    "set_maximized": [],
+    "unset_maximized": [],
+    "set_fullscreen": [
+      "output"
+    ],
+    "unset_fullscreen": [],
+    "set_minimized": [],
+    "configure": [
+      "width",
+      "height",
+      "states"
+    ],
+    "close": [],
+    "configure_bounds": [
+      "width",
+      "height"
+    ],
+    "wm_capabilities": [
+      "capabilities"
+    ]
+  },
+  "xdg_popup": {
+    "destroy": [],
+    "popup_done": []
+  },
+  "wp_alpha_modifier_v1": {
+    "destroy": [],
+    "get_surface": [
+      "id",
+      "surface"
+    ]
+  },
+  "wp_alpha_modifier_surface_v1": {
+    "destroy": [],
+    "set_multiplier": [
+      "factor"
+    ]
+  },
+  "wp_color_manager_v1": {
+    "destroy": [],
+    "get_output": [
+      "id",
+      "output"
+    ],
+    "get_surface": [
+      "id",
+      "surface"
+    ],
+    "get_surface_feedback": [
+      "id",
+      "surface"
+    ],
+    "create_icc_creator": [
+      "obj"
+    ],
+    "create_parametric_creator": [
+      "obj"
+    ],
+    "create_windows_scrgb": [
+      "image_description"
+    ],
+    "supported_intent": [
+      "render_intent"
+    ],
+    "supported_feature": [
+      "feature"
+    ],
+    "supported_tf_named": [
+      "tf"
+    ],
+    "supported_primaries_named": [
+      "primaries"
+    ],
+    "done": []
+  },
+  "wp_color_management_output_v1": {
+    "destroy": [],
+    "get_image_description": [
+      "image_description"
+    ],
+    "image_description_changed": []
+  },
+  "wp_color_management_surface_v1": {
+    "destroy": [],
+    "set_image_description": [
+      "image_description",
+      "render_intent"
+    ],
+    "unset_image_description": []
+  },
+  "wp_color_management_surface_feedback_v1": {
+    "destroy": [],
+    "get_preferred": [
+      "image_description"
+    ],
+    "get_preferred_parametric": [
+      "image_description"
+    ],
+    "preferred_changed": [
+      "identity"
+    ]
+  },
+  "wp_image_description_creator_icc_v1": {
+    "create": [
+      "image_description"
+    ],
+    "set_icc_file": [
+      "icc_profile",
+      "offset",
+      "length"
+    ]
+  },
+  "wp_image_description_creator_params_v1": {
+    "create": [
+      "image_description"
+    ],
+    "set_tf_named": [
+      "tf"
+    ],
+    "set_tf_power": [
+      "eexp"
+    ],
+    "set_primaries_named": [
+      "primaries"
+    ],
+    "set_primaries": [
+      "r_x",
+      "r_y",
+      "g_x",
+      "g_y",
+      "b_x",
+      "b_y",
+      "w_x",
+      "w_y"
+    ],
+    "set_luminances": [
+      "min_lum",
+      "max_lum",
+      "reference_lum"
+    ],
+    "set_mastering_display_primaries": [
+      "r_x",
+      "r_y",
+      "g_x",
+      "g_y",
+      "b_x",
+      "b_y",
+      "w_x",
+      "w_y"
+    ],
+    "set_mastering_luminance": [
+      "min_lum",
+      "max_lum"
+    ],
+    "set_max_cll": [
+      "max_cll"
+    ],
+    "set_max_fall": [
+      "max_fall"
+    ]
+  },
+  "wp_image_description_v1": {
+    "destroy": [],
+    "get_information": [
+      "information"
+    ],
+    "failed": [
+      "cause",
+      "msg"
+    ],
+    "ready": [
+      "identity"
+    ]
+  },
+  "wp_image_description_info_v1": {
+    "done": [],
+    "icc_file": [
+      "icc",
+      "icc_size"
+    ],
+    "primaries": [
+      "r_x",
+      "r_y",
+      "g_x",
+      "g_y",
+      "b_x",
+      "b_y",
+      "w_x",
+      "w_y"
+    ],
+    "primaries_named": [
+      "primaries"
+    ],
+    "tf_power": [
+      "eexp"
+    ],
+    "tf_named": [
+      "tf"
+    ],
+    "luminances": [
+      "min_lum",
+      "max_lum",
+      "reference_lum"
+    ],
+    "target_primaries": [
+      "r_x",
+      "r_y",
+      "g_x",
+      "g_y",
+      "b_x",
+      "b_y",
+      "w_x",
+      "w_y"
+    ],
+    "target_luminance": [
+      "min_lum",
+      "max_lum"
+    ],
+    "target_max_cll": [
+      "max_cll"
+    ],
+    "target_max_fall": [
+      "max_fall"
+    ]
+  },
+  "wp_color_representation_manager_v1": {
+    "destroy": [],
+    "get_surface": [
+      "id",
+      "surface"
+    ],
+    "supported_alpha_mode": [
+      "alpha_mode"
+    ],
+    "supported_coefficients_and_ranges": [
+      "coefficients",
+      "range"
+    ],
+    "done": []
+  },
+  "wp_color_representation_surface_v1": {
+    "destroy": [],
+    "set_alpha_mode": [
+      "alpha_mode"
+    ],
+    "set_coefficients_and_range": [
+      "coefficients",
+      "range"
+    ],
+    "set_chroma_location": [
+      "chroma_location"
+    ]
+  },
+  "wp_commit_timing_manager_v1": {
+    "destroy": [],
+    "get_timer": [
+      "id",
+      "surface"
+    ]
+  },
+  "wp_commit_timer_v1": {
+    "set_timestamp": [
+      "tv_sec_hi",
+      "tv_sec_lo",
+      "tv_nsec"
+    ],
+    "destroy": []
+  },
+  "wp_content_type_manager_v1": {
+    "destroy": [],
+    "get_surface_content_type": [
+      "id",
+      "surface"
+    ]
+  },
+  "wp_content_type_v1": {
+    "destroy": [],
+    "set_content_type": [
+      "content_type"
+    ]
+  },
+  "wp_cursor_shape_manager_v1": {
+    "destroy": [],
+    "get_pointer": [
+      "cursor_shape_device",
+      "pointer"
+    ],
+    "get_tablet_tool_v2": [
+      "cursor_shape_device",
+      "tablet_tool"
+    ]
+  },
+  "wp_cursor_shape_device_v1": {
+    "destroy": [],
+    "set_shape": [
+      "serial",
+      "shape"
+    ]
+  },
+  "wp_drm_lease_device_v1": {
+    "create_lease_request": [
+      "id"
+    ],
+    "release": [],
+    "drm_fd": [
+      "fd"
+    ],
+    "connector": [
+      "id"
+    ],
+    "done": [],
+    "released": []
+  },
+  "wp_drm_lease_connector_v1": {
+    "destroy": [],
+    "name": [
+      "name"
+    ],
+    "description": [
+      "description"
+    ],
+    "connector_id": [
+      "connector_id"
+    ],
+    "done": [],
+    "withdrawn": []
+  },
+  "wp_drm_lease_request_v1": {
+    "request_connector": [
+      "connector"
+    ],
+    "submit": [
+      "id"
+    ]
+  },
+  "wp_drm_lease_v1": {
+    "destroy": [],
+    "lease_fd": [
+      "leased_fd"
+    ],
+    "finished": []
+  },
+  "ext_data_control_manager_v1": {
+    "create_data_source": [
+      "id"
+    ],
+    "get_data_device": [
+      "id",
+      "seat"
+    ],
+    "destroy": []
+  },
+  "ext_data_control_device_v1": {
+    "set_selection": [
+      "source"
+    ],
+    "destroy": [],
+    "set_primary_selection": [
+      "source"
+    ],
+    "data_offer": [
+      "id"
+    ],
+    "selection": [
+      "id"
+    ],
+    "finished": [],
+    "primary_selection": [
+      "id"
+    ]
+  },
+  "ext_data_control_source_v1": {
+    "offer": [
+      "mime_type"
+    ],
+    "destroy": [],
+    "send": [
+      "mime_type",
+      "fd"
+    ],
+    "cancelled": []
+  },
+  "ext_data_control_offer_v1": {
+    "receive": [
+      "mime_type",
+      "fd"
+    ],
+    "destroy": [],
+    "offer": [
+      "mime_type"
+    ]
+  },
+  "ext_foreign_toplevel_list_v1": {
+    "stop": [],
+    "destroy": [],
+    "toplevel": [
+      "toplevel"
+    ],
+    "finished": []
+  },
+  "ext_foreign_toplevel_handle_v1": {
+    "destroy": [],
+    "closed": [],
+    "done": [],
+    "title": [
+      "title"
+    ],
+    "app_id": [
+      "app_id"
+    ],
+    "identifier": [
+      "identifier"
+    ]
+  },
+  "ext_idle_notifier_v1": {
+    "destroy": [],
+    "get_idle_notification": [
+      "id",
+      "timeout",
+      "seat"
+    ],
+    "get_input_idle_notification": [
+      "id",
+      "timeout",
+      "seat"
+    ]
+  },
+  "ext_idle_notification_v1": {
+    "destroy": [],
+    "idled": [],
+    "resumed": []
+  },
+  "ext_image_capture_source_v1": {
+    "destroy": []
+  },
+  "ext_output_image_capture_source_manager_v1": {
+    "create_source": [
+      "source",
+      "output"
+    ],
+    "destroy": []
+  },
+  "ext_foreign_toplevel_image_capture_source_manager_v1": {
+    "create_source": [
+      "source",
+      "toplevel_handle"
+    ],
+    "destroy": []
+  },
+  "ext_image_copy_capture_manager_v1": {
+    "create_session": [
+      "session",
+      "source",
+      "options"
+    ],
+    "create_pointer_cursor_session": [
+      "session",
+      "source",
+      "pointer"
+    ],
+    "destroy": []
+  },
+  "ext_image_copy_capture_session_v1": {
+    "create_frame": [
+      "frame"
+    ],
+    "destroy": [],
+    "buffer_size": [
+      "width",
+      "height"
+    ],
+    "shm_format": [
+      "format"
+    ],
+    "dmabuf_device": [
+      "device"
+    ],
+    "dmabuf_format": [
+      "format",
+      "modifiers"
+    ],
+    "done": [],
+    "stopped": []
+  },
+  "ext_image_copy_capture_frame_v1": {
+    "destroy": [],
+    "attach_buffer": [
+      "buffer"
+    ],
+    "damage_buffer": [
+      "x",
+      "y",
+      "width",
+      "height"
+    ],
+    "capture": [],
+    "transform": [
+      "transform"
+    ],
+    "damage": [
+      "x",
+      "y",
+      "width",
+      "height"
+    ],
+    "presentation_time": [
+      "tv_sec_hi",
+      "tv_sec_lo",
+      "tv_nsec"
+    ],
+    "ready": [],
+    "failed": [
+      "reason"
+    ]
+  },
+  "ext_image_copy_capture_cursor_session_v1": {
+    "destroy": [],
+    "get_capture_session": [
+      "session"
+    ],
+    "enter": [],
+    "leave": [],
+    "position": [
+      "x",
+      "y"
+    ],
+    "hotspot": [
+      "x",
+      "y"
+    ]
+  },
+  "ext_session_lock_manager_v1": {
+    "destroy": [],
+    "lock": [
+      "id"
+    ]
+  },
+  "ext_session_lock_v1": {
+    "destroy": [],
+    "get_lock_surface": [
+      "id",
+      "surface",
+      "output"
+    ],
+    "unlock_and_destroy": [],
+    "locked": [],
+    "finished": []
+  },
+  "ext_session_lock_surface_v1": {
+    "destroy": [],
+    "ack_configure": [
+      "serial"
+    ],
+    "configure": [
+      "serial",
+      "width",
+      "height"
+    ]
+  },
+  "ext_transient_seat_manager_v1": {
+    "create": [
+      "seat"
+    ],
+    "destroy": []
+  },
+  "ext_transient_seat_v1": {
+    "destroy": [],
+    "ready": [
+      "global_name"
+    ],
+    "denied": []
+  },
+  "ext_workspace_manager_v1": {
+    "commit": [],
+    "stop": [],
+    "workspace_group": [
+      "workspace_group"
+    ],
+    "workspace": [
+      "workspace"
+    ],
+    "done": [],
+    "finished": []
+  },
+  "ext_workspace_group_handle_v1": {
+    "create_workspace": [
+      "workspace"
+    ],
+    "destroy": [],
+    "capabilities": [
+      "capabilities"
+    ],
+    "output_enter": [
+      "output"
+    ],
+    "output_leave": [
+      "output"
+    ],
+    "workspace_enter": [
+      "workspace"
+    ],
+    "workspace_leave": [
+      "workspace"
+    ],
+    "removed": []
+  },
+  "ext_workspace_handle_v1": {
+    "destroy": [],
+    "activate": [],
+    "deactivate": [],
+    "assign": [
+      "workspace_group"
+    ],
+    "remove": [],
+    "id": [
+      "id"
+    ],
+    "name": [
+      "name"
+    ],
+    "coordinates": [
+      "coordinates"
+    ],
+    "state": [
+      "state"
+    ],
+    "capabilities": [
+      "capabilities"
+    ],
+    "removed": []
+  },
+  "wp_fifo_manager_v1": {
+    "destroy": [],
+    "get_fifo": [
+      "id",
+      "surface"
+    ]
+  },
+  "wp_fifo_v1": {
+    "set_barrier": [],
+    "wait_barrier": [],
+    "destroy": []
+  },
+  "wp_fractional_scale_manager_v1": {
+    "destroy": [],
+    "get_fractional_scale": [
+      "id",
+      "surface"
+    ]
+  },
+  "wp_fractional_scale_v1": {
+    "destroy": [],
+    "preferred_scale": [
+      "scale"
+    ]
+  },
+  "wp_linux_drm_syncobj_manager_v1": {
+    "destroy": [],
+    "get_surface": [
+      "id",
+      "surface"
+    ],
+    "import_timeline": [
+      "id",
+      "fd"
+    ]
+  },
+  "wp_linux_drm_syncobj_timeline_v1": {
+    "destroy": []
+  },
+  "wp_linux_drm_syncobj_surface_v1": {
+    "destroy": [],
+    "set_acquire_point": [
+      "timeline",
+      "point_hi",
+      "point_lo"
+    ],
+    "set_release_point": [
+      "timeline",
+      "point_hi",
+      "point_lo"
+    ]
+  },
+  "wp_security_context_manager_v1": {
+    "destroy": [],
+    "create_listener": [
+      "id",
+      "listen_fd",
+      "close_fd"
+    ]
+  },
+  "wp_security_context_v1": {
+    "destroy": [],
+    "set_sandbox_engine": [
+      "name"
+    ],
+    "set_app_id": [
+      "app_id"
+    ],
+    "set_instance_id": [
+      "instance_id"
+    ],
+    "commit": []
+  },
+  "wp_single_pixel_buffer_manager_v1": {
+    "destroy": [],
+    "create_u32_rgba_buffer": [
+      "id",
+      "r",
+      "g",
+      "b",
+      "a"
+    ]
+  },
+  "wp_tearing_control_manager_v1": {
+    "destroy": [],
+    "get_tearing_control": [
+      "id",
+      "surface"
+    ]
+  },
+  "wp_tearing_control_v1": {
+    "set_presentation_hint": [
+      "hint"
+    ],
+    "destroy": []
+  },
+  "xdg_activation_v1": {
+    "destroy": [],
+    "get_activation_token": [
+      "id"
+    ],
+    "activate": [
+      "token",
+      "surface"
+    ]
+  },
+  "xdg_activation_token_v1": {
+    "set_serial": [
+      "serial",
+      "seat"
+    ],
+    "set_app_id": [
+      "app_id"
+    ],
+    "set_surface": [
+      "surface"
+    ],
+    "commit": [],
+    "destroy": [],
+    "done": [
+      "token"
+    ]
+  },
+  "xdg_wm_dialog_v1": {
+    "destroy": [],
+    "get_xdg_dialog": [
+      "id",
+      "toplevel"
+    ]
+  },
+  "xdg_dialog_v1": {
+    "destroy": [],
+    "set_modal": [],
+    "unset_modal": []
+  },
+  "xdg_system_bell_v1": {
+    "destroy": [],
+    "ring": [
+      "surface"
+    ]
+  },
+  "xdg_toplevel_drag_manager_v1": {
+    "destroy": [],
+    "get_xdg_toplevel_drag": [
+      "id",
+      "data_source"
+    ]
+  },
+  "xdg_toplevel_drag_v1": {
+    "destroy": [],
+    "attach": [
+      "toplevel",
+      "x_offset",
+      "y_offset"
+    ]
+  },
+  "xdg_toplevel_icon_manager_v1": {
+    "destroy": [],
+    "create_icon": [
+      "id"
+    ],
+    "set_icon": [
+      "toplevel",
+      "icon"
+    ],
+    "icon_size": [
+      "size"
+    ],
+    "done": []
+  },
+  "xdg_toplevel_icon_v1": {
+    "destroy": [],
+    "set_name": [
+      "icon_name"
+    ],
+    "add_buffer": [
+      "buffer",
+      "scale"
+    ]
+  },
+  "xdg_toplevel_tag_manager_v1": {
+    "destroy": [],
+    "set_toplevel_tag": [
+      "toplevel",
+      "tag"
+    ],
+    "set_toplevel_description": [
+      "toplevel",
+      "description"
+    ]
+  },
+  "xwayland_shell_v1": {
+    "destroy": [],
+    "get_xwayland_surface": [
+      "id",
+      "surface"
+    ]
+  },
+  "xwayland_surface_v1": {
+    "set_serial": [
+      "serial_lo",
+      "serial_hi"
+    ],
+    "destroy": []
+  },
+  "zwp_fullscreen_shell_v1": {
+    "release": [],
+    "present_surface": [
+      "surface",
+      "method",
+      "output"
+    ],
+    "present_surface_for_mode": [
+      "surface",
+      "output",
+      "framerate",
+      "feedback"
+    ],
+    "capability": [
+      "capability"
+    ]
+  },
+  "zwp_fullscreen_shell_mode_feedback_v1": {
+    "mode_successful": [],
+    "mode_failed": [],
+    "present_cancelled": []
+  },
+  "zwp_idle_inhibit_manager_v1": {
+    "destroy": [],
+    "create_inhibitor": [
+      "id",
+      "surface"
+    ]
+  },
+  "zwp_idle_inhibitor_v1": {
+    "destroy": []
+  },
+  "zwp_input_method_context_v1": {
+    "destroy": [],
+    "commit_string": [
+      "serial",
+      "text"
+    ],
+    "preedit_string": [
+      "serial",
+      "text",
+      "commit"
+    ],
+    "preedit_styling": [
+      "index",
+      "length",
+      "style"
+    ],
+    "preedit_cursor": [
+      "index"
+    ],
+    "delete_surrounding_text": [
+      "index",
+      "length"
+    ],
+    "cursor_position": [
+      "index",
+      "anchor"
+    ],
+    "modifiers_map": [
+      "map"
+    ],
+    "keysym": [
+      "serial",
+      "time",
+      "sym",
+      "state",
+      "modifiers"
+    ],
+    "grab_keyboard": [
+      "keyboard"
+    ],
+    "key": [
+      "serial",
+      "time",
+      "key",
+      "state"
+    ],
+    "modifiers": [
+      "serial",
+      "mods_depressed",
+      "mods_latched",
+      "mods_locked",
+      "group"
+    ],
+    "language": [
+      "serial",
+      "language"
+    ],
+    "text_direction": [
+      "serial",
+      "direction"
+    ],
+    "surrounding_text": [
+      "text",
+      "cursor",
+      "anchor"
+    ],
+    "reset": [],
+    "content_type": [
+      "hint",
+      "purpose"
+    ],
+    "invoke_action": [
+      "button",
+      "index"
+    ],
+    "commit_state": [
+      "serial"
+    ],
+    "preferred_language": [
+      "language"
+    ]
+  },
+  "zwp_input_method_v1": {
+    "activate": [
+      "id"
+    ],
+    "deactivate": [
+      "context"
+    ]
+  },
+  "zwp_input_panel_v1": {
+    "get_input_panel_surface": [
+      "id",
+      "surface"
+    ]
+  },
+  "zwp_input_panel_surface_v1": {
+    "set_toplevel": [
+      "output",
+      "position"
+    ],
+    "set_overlay_panel": []
+  },
+  "zwp_input_timestamps_manager_v1": {
+    "destroy": [],
+    "get_keyboard_timestamps": [
+      "id",
+      "keyboard"
+    ],
+    "get_pointer_timestamps": [
+      "id",
+      "pointer"
+    ],
+    "get_touch_timestamps": [
+      "id",
+      "touch"
+    ]
+  },
+  "zwp_input_timestamps_v1": {
+    "destroy": [],
+    "timestamp": [
+      "tv_sec_hi",
+      "tv_sec_lo",
+      "tv_nsec"
+    ]
+  },
+  "zwp_keyboard_shortcuts_inhibit_manager_v1": {
+    "destroy": [],
+    "inhibit_shortcuts": [
+      "id",
+      "surface",
+      "seat"
+    ]
+  },
+  "zwp_keyboard_shortcuts_inhibitor_v1": {
+    "destroy": [],
+    "active": [],
+    "inactive": []
+  },
+  "zwp_linux_explicit_synchronization_v1": {
+    "destroy": [],
+    "get_synchronization": [
+      "id",
+      "surface"
+    ]
+  },
+  "zwp_linux_surface_synchronization_v1": {
+    "destroy": [],
+    "set_acquire_fence": [
+      "fd"
+    ],
+    "get_release": [
+      "release"
+    ]
+  },
+  "zwp_linux_buffer_release_v1": {
+    "fenced_release": [
+      "fence"
+    ],
+    "immediate_release": []
+  },
+  "zwp_pointer_constraints_v1": {
+    "destroy": [],
+    "lock_pointer": [
+      "id",
+      "surface",
+      "pointer",
+      "region",
+      "lifetime"
+    ],
+    "confine_pointer": [
+      "id",
+      "surface",
+      "pointer",
+      "region",
+      "lifetime"
+    ]
+  },
+  "zwp_locked_pointer_v1": {
+    "destroy": [],
+    "set_cursor_position_hint": [
+      "surface_x",
+      "surface_y"
+    ],
+    "set_region": [
+      "region"
+    ],
+    "locked": [],
+    "unlocked": []
+  },
+  "zwp_confined_pointer_v1": {
+    "destroy": [],
+    "set_region": [
+      "region"
+    ],
+    "confined": [],
+    "unconfined": []
+  },
+  "zwp_pointer_gestures_v1": {
+    "get_swipe_gesture": [
+      "id",
+      "pointer"
+    ],
+    "get_pinch_gesture": [
+      "id",
+      "pointer"
+    ],
+    "release": [],
+    "get_hold_gesture": [
+      "id",
+      "pointer"
+    ]
+  },
+  "zwp_pointer_gesture_swipe_v1": {
+    "destroy": [],
+    "begin": [
+      "serial",
+      "time",
+      "surface",
+      "fingers"
+    ],
+    "update": [
+      "time",
+      "dx",
+      "dy"
+    ],
+    "end": [
+      "serial",
+      "time",
+      "cancelled"
+    ]
+  },
+  "zwp_pointer_gesture_pinch_v1": {
+    "destroy": [],
+    "begin": [
+      "serial",
+      "time",
+      "surface",
+      "fingers"
+    ],
+    "update": [
+      "time",
+      "dx",
+      "dy",
+      "scale",
+      "rotation"
+    ],
+    "end": [
+      "serial",
+      "time",
+      "cancelled"
+    ]
+  },
+  "zwp_pointer_gesture_hold_v1": {
+    "destroy": [],
+    "begin": [
+      "serial",
+      "time",
+      "surface",
+      "fingers"
+    ],
+    "end": [
+      "serial",
+      "time",
+      "cancelled"
+    ]
+  },
+  "zwp_primary_selection_device_manager_v1": {
+    "create_source": [
+      "id"
+    ],
+    "get_device": [
+      "id",
+      "seat"
+    ],
+    "destroy": []
+  },
+  "zwp_primary_selection_device_v1": {
+    "set_selection": [
+      "source",
+      "serial"
+    ],
+    "destroy": [],
+    "data_offer": [
+      "offer"
+    ],
+    "selection": [
+      "id"
+    ]
+  },
+  "zwp_primary_selection_offer_v1": {
+    "receive": [
+      "mime_type",
+      "fd"
+    ],
+    "destroy": [],
+    "offer": [
+      "mime_type"
+    ]
+  },
+  "zwp_primary_selection_source_v1": {
+    "offer": [
+      "mime_type"
+    ],
+    "destroy": [],
+    "send": [
+      "mime_type",
+      "fd"
+    ],
+    "cancelled": []
+  },
+  "zwp_relative_pointer_manager_v1": {
+    "destroy": [],
+    "get_relative_pointer": [
+      "id",
+      "pointer"
+    ]
+  },
+  "zwp_relative_pointer_v1": {
+    "destroy": [],
+    "relative_motion": [
+      "utime_hi",
+      "utime_lo",
+      "dx",
+      "dy",
+      "dx_unaccel",
+      "dy_unaccel"
+    ]
+  },
+  "zwp_tablet_manager_v1": {
+    "get_tablet_seat": [
+      "tablet_seat",
+      "seat"
+    ],
+    "destroy": []
+  },
+  "zwp_tablet_seat_v1": {
+    "destroy": [],
+    "tablet_added": [
+      "id"
+    ],
+    "tool_added": [
+      "id"
+    ]
+  },
+  "zwp_tablet_tool_v1": {
+    "set_cursor": [
+      "serial",
+      "surface",
+      "hotspot_x",
+      "hotspot_y"
+    ],
+    "destroy": [],
+    "type": [
+      "tool_type"
+    ],
+    "hardware_serial": [
+      "hardware_serial_hi",
+      "hardware_serial_lo"
+    ],
+    "hardware_id_wacom": [
+      "hardware_id_hi",
+      "hardware_id_lo"
+    ],
+    "capability": [
+      "capability"
+    ],
+    "done": [],
+    "removed": [],
+    "proximity_in": [
+      "serial",
+      "tablet",
+      "surface"
+    ],
+    "proximity_out": [],
+    "down": [
+      "serial"
+    ],
+    "up": [],
+    "motion": [
+      "x",
+      "y"
+    ],
+    "pressure": [
+      "pressure"
+    ],
+    "distance": [
+      "distance"
+    ],
+    "tilt": [
+      "tilt_x",
+      "tilt_y"
+    ],
+    "rotation": [
+      "degrees"
+    ],
+    "slider": [
+      "position"
+    ],
+    "wheel": [
+      "degrees",
+      "clicks"
+    ],
+    "button": [
+      "serial",
+      "button",
+      "state"
+    ],
+    "frame": [
+      "time"
+    ]
+  },
+  "zwp_tablet_v1": {
+    "destroy": [],
+    "name": [
+      "name"
+    ],
+    "id": [
+      "vid",
+      "pid"
+    ],
+    "path": [
+      "path"
+    ],
+    "done": [],
+    "removed": []
+  },
+  "zwp_text_input_v1": {
+    "activate": [
+      "seat",
+      "surface"
+    ],
+    "deactivate": [
+      "seat"
+    ],
+    "show_input_panel": [],
+    "hide_input_panel": [],
+    "reset": [],
+    "set_surrounding_text": [
+      "text",
+      "cursor",
+      "anchor"
+    ],
+    "set_content_type": [
+      "hint",
+      "purpose"
+    ],
+    "set_cursor_rectangle": [
+      "x",
+      "y",
+      "width",
+      "height"
+    ],
+    "set_preferred_language": [
+      "language"
+    ],
+    "commit_state": [
+      "serial"
+    ],
+    "invoke_action": [
+      "button",
+      "index"
+    ],
+    "enter": [
+      "surface"
+    ],
+    "leave": [],
+    "modifiers_map": [
+      "map"
+    ],
+    "input_panel_state": [
+      "state"
+    ],
+    "preedit_string": [
+      "serial",
+      "text",
+      "commit"
+    ],
+    "preedit_styling": [
+      "index",
+      "length",
+      "style"
+    ],
+    "preedit_cursor": [
+      "index"
+    ],
+    "commit_string": [
+      "serial",
+      "text"
+    ],
+    "cursor_position": [
+      "index",
+      "anchor"
+    ],
+    "delete_surrounding_text": [
+      "index",
+      "length"
+    ],
+    "keysym": [
+      "serial",
+      "time",
+      "sym",
+      "state",
+      "modifiers"
+    ],
+    "language": [
+      "serial",
+      "language"
+    ],
+    "text_direction": [
+      "serial",
+      "direction"
+    ]
+  },
+  "zwp_text_input_manager_v1": {
+    "create_text_input": [
+      "id"
+    ]
+  },
+  "zwp_text_input_v3": {
+    "destroy": [],
+    "enable": [],
+    "disable": [],
+    "set_surrounding_text": [
+      "text",
+      "cursor",
+      "anchor"
+    ],
+    "set_text_change_cause": [
+      "cause"
+    ],
+    "set_content_type": [
+      "hint",
+      "purpose"
+    ],
+    "set_cursor_rectangle": [
+      "x",
+      "y",
+      "width",
+      "height"
+    ],
+    "commit": [],
+    "enter": [
+      "surface"
+    ],
+    "leave": [
+      "surface"
+    ],
+    "preedit_string": [
+      "text",
+      "cursor_begin",
+      "cursor_end"
+    ],
+    "commit_string": [
+      "text"
+    ],
+    "delete_surrounding_text": [
+      "before_length",
+      "after_length"
+    ],
+    "done": [
+      "serial"
+    ]
+  },
+  "zwp_text_input_manager_v3": {
+    "destroy": [],
+    "get_text_input": [
+      "id",
+      "seat"
+    ]
+  },
+  "zxdg_decoration_manager_v1": {
+    "destroy": [],
+    "get_toplevel_decoration": [
+      "id",
+      "toplevel"
+    ]
+  },
+  "zxdg_toplevel_decoration_v1": {
+    "destroy": [],
+    "set_mode": [
+      "mode"
+    ],
+    "unset_mode": [],
+    "configure": [
+      "mode"
+    ]
+  },
+  "zxdg_exporter_v1": {
+    "destroy": [],
+    "export": [
+      "id",
+      "surface"
+    ]
+  },
+  "zxdg_importer_v1": {
+    "destroy": [],
+    "import": [
+      "id",
+      "handle"
+    ]
+  },
+  "zxdg_exported_v1": {
+    "destroy": [],
+    "handle": [
+      "handle"
+    ]
+  },
+  "zxdg_imported_v1": {
+    "destroy": [],
+    "set_parent_of": [
+      "surface"
+    ],
+    "destroyed": []
+  },
+  "zxdg_exporter_v2": {
+    "destroy": [],
+    "export_toplevel": [
+      "id",
+      "surface"
+    ]
+  },
+  "zxdg_importer_v2": {
+    "destroy": [],
+    "import_toplevel": [
+      "id",
+      "handle"
+    ]
+  },
+  "zxdg_exported_v2": {
+    "destroy": [],
+    "handle": [
+      "handle"
+    ]
+  },
+  "zxdg_imported_v2": {
+    "destroy": [],
+    "set_parent_of": [
+      "surface"
+    ],
+    "destroyed": []
+  },
+  "zxdg_output_manager_v1": {
+    "destroy": [],
+    "get_xdg_output": [
+      "id",
+      "output"
+    ]
+  },
+  "zxdg_output_v1": {
+    "destroy": [],
+    "logical_position": [
+      "x",
+      "y"
+    ],
+    "logical_size": [
+      "width",
+      "height"
+    ],
+    "done": [],
+    "name": [
+      "name"
+    ],
+    "description": [
+      "description"
+    ]
+  },
+  "xdg_shell": {
+    "destroy": [],
+    "use_unstable_version": [
+      "version"
+    ],
+    "get_xdg_surface": [
+      "id",
+      "surface"
+    ],
+    "get_xdg_popup": [
+      "id",
+      "surface",
+      "parent",
+      "seat",
+      "serial",
+      "x",
+      "y"
+    ],
+    "pong": [
+      "serial"
+    ],
+    "ping": [
+      "serial"
+    ]
+  },
+  "zxdg_shell_v6": {
+    "destroy": [],
+    "create_positioner": [
+      "id"
+    ],
+    "get_xdg_surface": [
+      "id",
+      "surface"
+    ],
+    "pong": [
+      "serial"
+    ],
+    "ping": [
+      "serial"
+    ]
+  },
+  "zxdg_positioner_v6": {
+    "destroy": [],
+    "set_size": [
+      "width",
+      "height"
+    ],
+    "set_anchor_rect": [
+      "x",
+      "y",
+      "width",
+      "height"
+    ],
+    "set_anchor": [
+      "anchor"
+    ],
+    "set_gravity": [
+      "gravity"
+    ],
+    "set_constraint_adjustment": [
+      "constraint_adjustment"
+    ],
+    "set_offset": [
+      "x",
+      "y"
+    ]
+  },
+  "zxdg_surface_v6": {
+    "destroy": [],
+    "get_toplevel": [
+      "id"
+    ],
+    "get_popup": [
+      "id",
+      "parent",
+      "positioner"
+    ],
+    "set_window_geometry": [
+      "x",
+      "y",
+      "width",
+      "height"
+    ],
+    "ack_configure": [
+      "serial"
+    ],
+    "configure": [
+      "serial"
+    ]
+  },
+  "zxdg_toplevel_v6": {
+    "destroy": [],
+    "set_parent": [
+      "parent"
+    ],
+    "set_title": [
+      "title"
+    ],
+    "set_app_id": [
+      "app_id"
+    ],
+    "show_window_menu": [
+      "seat",
+      "serial",
+      "x",
+      "y"
+    ],
+    "move": [
+      "seat",
+      "serial"
+    ],
+    "resize": [
+      "seat",
+      "serial",
+      "edges"
+    ],
+    "set_max_size": [
+      "width",
+      "height"
+    ],
+    "set_min_size": [
+      "width",
+      "height"
+    ],
+    "set_maximized": [],
+    "unset_maximized": [],
+    "set_fullscreen": [
+      "output"
+    ],
+    "unset_fullscreen": [],
+    "set_minimized": [],
+    "configure": [
+      "width",
+      "height",
+      "states"
+    ],
+    "close": []
+  },
+  "zxdg_popup_v6": {
+    "destroy": [],
+    "grab": [
+      "seat",
+      "serial"
+    ],
+    "configure": [
+      "x",
+      "y",
+      "width",
+      "height"
+    ],
+    "popup_done": []
+  },
+  "zwp_xwayland_keyboard_grab_manager_v1": {
+    "destroy": [],
+    "grab_keyboard": [
+      "id",
+      "surface",
+      "seat"
+    ]
+  },
+  "zwp_xwayland_keyboard_grab_v1": {
+    "destroy": []
+  },
+  "treeland_app_id_resolver_manager_v1": {
+    "destroy": [],
+    "get_resolver": [
+      "id"
+    ]
+  },
+  "treeland_app_id_resolver_v1": {
+    "respond": [
+      "request_id",
+      "app_id",
+      "sandbox_engine_name"
+    ],
+    "destroy": [],
+    "identify_request": [
+      "request_id",
+      "pidfd"
+    ]
+  },
+  "treeland_capture_session_v1": {
+    "destroy": [],
+    "start": [],
+    "frame_done": [
+      "tv_sec_hi",
+      "tv_sec_lo",
+      "tv_usec"
+    ],
+    "frame": [
+      "offset_x",
+      "offset_y",
+      "width",
+      "height",
+      "buffer_flags",
+      "flags",
+      "format",
+      "mod_high",
+      "mod_low",
+      "num_objects"
+    ],
+    "object": [
+      "index",
+      "fd",
+      "size",
+      "offset",
+      "stride",
+      "plane_index"
+    ],
+    "ready": [
+      "tv_sec_hi",
+      "tv_sec_lo",
+      "tv_nsec"
+    ],
+    "cancel": [
+      "reason"
+    ]
+  },
+  "treeland_capture_frame_v1": {
+    "destroy": [],
+    "copy": [
+      "buffer"
+    ],
+    "buffer": [
+      "format",
+      "width",
+      "height",
+      "stride"
+    ],
+    "buffer_done": [],
+    "flags": [
+      "flags"
+    ],
+    "ready": [],
+    "failed": []
+  },
+  "treeland_capture_context_v1": {
+    "destroy": [],
+    "select_source": [
+      "source_hint",
+      "freeze",
+      "with_cursor",
+      "mask"
+    ],
+    "capture": [
+      "frame"
+    ],
+    "create_session": [
+      "session"
+    ],
+    "source_ready": [
+      "region_x",
+      "region_y",
+      "region_width",
+      "region_height",
+      "source_type"
+    ],
+    "source_failed": [
+      "reason"
+    ]
+  },
+  "treeland_capture_manager_v1": {
+    "destroy": [],
+    "get_context": [
+      "context"
+    ]
+  },
+  "treeland_dde_shell_manager_v1": {
+    "get_window_overlap_checker": [
+      "id"
+    ],
+    "get_shell_surface": [
+      "id",
+      "surface"
+    ],
+    "get_treeland_dde_active": [
+      "id",
+      "seat"
+    ],
+    "get_treeland_multitaskview": [
+      "id"
+    ],
+    "get_treeland_window_picker": [
+      "id"
+    ],
+    "get_treeland_lockscreen": [
+      "id"
+    ],
+    "set_xwindow_position_relative": [
+      "callback",
+      "wid",
+      "anchor",
+      "dx",
+      "dy"
+    ]
+  },
+  "treeland_window_overlap_checker": {
+    "update": [
+      "width",
+      "height",
+      "anchor",
+      "output"
+    ],
+    "destroy": [],
+    "enter": [],
+    "leave": []
+  },
+  "treeland_dde_shell_surface_v1": {
+    "destroy": [],
+    "set_surface_position": [
+      "x",
+      "y"
+    ],
+    "set_role": [
+      "role"
+    ],
+    "set_auto_placement": [
+      "y_offset"
+    ],
+    "set_skip_switcher": [
+      "skip"
+    ],
+    "set_skip_dock_preview": [
+      "skip"
+    ],
+    "set_skip_muti_task_view": [
+      "skip"
+    ],
+    "set_accept_keyboard_focus": [
+      "accept"
+    ]
+  },
+  "treeland_dde_active_v1": {
+    "destroy": [],
+    "active_in": [
+      "reason"
+    ],
+    "active_out": [
+      "reason"
+    ],
+    "start_drag": [],
+    "drop": []
+  },
+  "treeland_multitaskview_v1": {
+    "destroy": [],
+    "toggle": []
+  },
+  "treeland_window_picker_v1": {
+    "destroy": [],
+    "pick": [
+      "hint"
+    ],
+    "window": [
+      "pid"
+    ]
+  },
+  "treeland_lockscreen_v1": {
+    "destroy": [],
+    "lock": [],
+    "shutdown": [],
+    "switch_user": []
+  },
+  "treeland_ddm_v1": {
+    "switch_to_greeter": [],
+    "switch_to_user": [
+      "username"
+    ],
+    "activate_session": [],
+    "deactivate_session": [],
+    "enable_render": [],
+    "disable_render": [
+      "callback"
+    ],
+    "switch_to_vt": [
+      "vtnr"
+    ],
+    "acquire_vt": [
+      "vtnr"
+    ]
+  },
+  "treeland_foreign_toplevel_manager_v1": {
+    "stop": [],
+    "get_dock_preview_context": [
+      "relative_surface",
+      "id"
+    ],
+    "toplevel": [
+      "toplevel"
+    ],
+    "finished": []
+  },
+  "treeland_foreign_toplevel_handle_v1": {
+    "set_maximized": [],
+    "unset_maximized": [],
+    "set_minimized": [],
+    "unset_minimized": [],
+    "activate": [
+      "seat"
+    ],
+    "close": [],
+    "set_rectangle": [
+      "surface",
+      "x",
+      "y",
+      "width",
+      "height"
+    ],
+    "destroy": [],
+    "set_fullscreen": [
+      "output"
+    ],
+    "unset_fullscreen": [],
+    "pid": [
+      "pid"
+    ],
+    "title": [
+      "title"
+    ],
+    "app_id": [
+      "app_id"
+    ],
+    "identifier": [
+      "identifier"
+    ],
+    "output_enter": [
+      "output"
+    ],
+    "output_leave": [
+      "output"
+    ],
+    "state": [
+      "state"
+    ],
+    "done": [],
+    "closed": [],
+    "parent": [
+      "parent"
+    ]
+  },
+  "treeland_dock_preview_context_v1": {
+    "show": [
+      "surfaces",
+      "x",
+      "y",
+      "direction"
+    ],
+    "show_tooltip": [
+      "tooltip",
+      "x",
+      "y",
+      "direction"
+    ],
+    "close": [],
+    "destroy": [],
+    "enter": [],
+    "leave": []
+  },
+  "treeland_output_manager_v1": {
+    "set_primary_output": [
+      "output"
+    ],
+    "get_color_control": [
+      "id",
+      "output"
+    ],
+    "destroy": [],
+    "primary_output": [
+      "output_name"
+    ]
+  },
+  "treeland_output_color_control_v1": {
+    "set_color_temperature": [
+      "temperature"
+    ],
+    "set_brightness": [
+      "brightness"
+    ],
+    "commit": [],
+    "destroy": [],
+    "result": [
+      "success"
+    ],
+    "color_temperature": [
+      "temperature"
+    ],
+    "brightness": [
+      "brightness"
+    ]
+  },
+  "treeland_personalization_manager_v1": {
+    "get_window_context": [
+      "id",
+      "surface"
+    ],
+    "get_wallpaper_context": [
+      "id"
+    ],
+    "get_cursor_context": [
+      "id"
+    ],
+    "get_font_context": [
+      "id"
+    ],
+    "get_appearance_context": [
+      "id"
+    ]
+  },
+  "treeland_personalization_wallpaper_context_v1": {
+    "set_fd": [
+      "fd",
+      "metadata"
+    ],
+    "set_identifier": [
+      "identifier"
+    ],
+    "set_output": [
+      "output"
+    ],
+    "set_on": [
+      "options"
+    ],
+    "set_isdark": [
+      "isdark"
+    ],
+    "commit": [],
+    "get_metadata": [],
+    "destroy": [],
+    "metadata": [
+      "metadata"
+    ]
+  },
+  "treeland_personalization_cursor_context_v1": {
+    "set_theme": [
+      "name"
+    ],
+    "get_theme": [],
+    "set_size": [
+      "size"
+    ],
+    "get_size": [],
+    "commit": [],
+    "destroy": [],
+    "verfity": [
+      "success"
+    ],
+    "theme": [
+      "name"
+    ],
+    "size": [
+      "size"
+    ]
+  },
+  "treeland_personalization_window_context_v1": {
+    "set_blend_mode": [
+      "mode"
+    ],
+    "set_round_corner_radius": [
+      "radius"
+    ],
+    "set_shadow": [
+      "radius",
+      "offset_x",
+      "offset_y",
+      "r",
+      "g",
+      "b",
+      "a"
+    ],
+    "set_border": [
+      "width",
+      "r",
+      "g",
+      "b",
+      "a"
+    ],
+    "set_titlebar": [
+      "mode"
+    ],
+    "destroy": []
+  },
+  "treeland_personalization_font_context_v1": {
+    "set_font_size": [
+      "size"
+    ],
+    "get_font_size": [],
+    "set_font": [
+      "font_name"
+    ],
+    "get_font": [],
+    "set_monospace_font": [
+      "font_name"
+    ],
+    "get_monospace_font": [],
+    "destroy": [],
+    "font": [
+      "font_name"
+    ],
+    "monospace_font": [
+      "font_name"
+    ],
+    "font_size": [
+      "font_size"
+    ]
+  },
+  "treeland_personalization_appearance_context_v1": {
+    "set_round_corner_radius": [
+      "radius"
+    ],
+    "get_round_corner_radius": [],
+    "set_icon_theme": [
+      "theme"
+    ],
+    "get_icon_theme": [],
+    "set_active_color": [
+      "color"
+    ],
+    "get_active_color": [],
+    "set_window_opacity": [
+      "opacity"
+    ],
+    "get_window_opacity": [],
+    "set_window_theme_type": [
+      "type"
+    ],
+    "get_window_theme_type": [],
+    "set_window_titlebar_height": [
+      "height"
+    ],
+    "get_window_titlebar_height": [],
+    "destroy": [],
+    "round_corner_radius": [
+      "radius"
+    ],
+    "icon_theme": [
+      "theme_name"
+    ],
+    "active_color": [
+      "active_color"
+    ],
+    "window_opacity": [
+      "opacity"
+    ],
+    "window_theme_type": [
+      "type"
+    ],
+    "window_titlebar_height": [
+      "height"
+    ]
+  },
+  "treeland_prelaunch_splash_manager_v1": {
+    "destroy": [],
+    "create_splash": [
+      "app_id",
+      "sandbox_engine_name",
+      "icon_buffer"
+    ]
+  },
+  "treeland_prelaunch_splash_manager_v2": {
+    "destroy": [],
+    "create_splash": [
+      "splash",
+      "app_id",
+      "instance_id",
+      "sandbox_engine_name",
+      "icon_buffer"
+    ]
+  },
+  "treeland_prelaunch_splash_v2": {
+    "destroy": []
+  },
+  "treeland_screensaver_v1": {
+    "inhibit": [
+      "application_name",
+      "reason_for_inhibit"
+    ],
+    "uninhibit": []
+  },
+  "treeland_shortcut_manager_v1": {
+    "register_shortcut_context": [
+      "key",
+      "id"
+    ]
+  },
+  "treeland_shortcut_context_v1": {
+    "destroy": [],
+    "shortcut": []
+  },
+  "treeland_shortcut_manager_v2": {
+    "destroy": [],
+    "acquire": [],
+    "bind_key": [
+      "name",
+      "key",
+      "flags",
+      "action"
+    ],
+    "bind_swipe_gesture": [
+      "name",
+      "finger",
+      "direction",
+      "action"
+    ],
+    "bind_hold_gesture": [
+      "name",
+      "finger",
+      "action"
+    ],
+    "commit": [],
+    "unbind": [
+      "name"
+    ],
+    "activated": [
+      "name",
+      "flags"
+    ],
+    "commit_success": [],
+    "commit_failure": [
+      "name",
+      "error"
+    ]
+  },
+  "treeland_virtual_output_manager_v1": {
+    "create_virtual_output": [
+      "id",
+      "name",
+      "outputs"
+    ],
+    "get_virtual_output_list": [],
+    "get_virtual_output": [
+      "name",
+      "id"
+    ],
+    "virtual_output_list": [
+      "names"
+    ]
+  },
+  "treeland_virtual_output_v1": {
+    "destroy": [],
+    "outputs": [
+      "name",
+      "outputs"
+    ],
+    "error": [
+      "code",
+      "message"
+    ]
+  },
+  "treeland_wallpaper_color_manager_v1": {
+    "watch": [
+      "output"
+    ],
+    "unwatch": [
+      "output"
+    ],
+    "destroy": [],
+    "output_color": [
+      "output",
+      "isdark"
+    ]
+  },
+  "treeland_wallpaper_manager_v1": {
+    "destroy": [],
+    "get_treeland_wallpaper": [
+      "id",
+      "output",
+      "surface"
+    ]
+  },
+  "treeland_wallpaper_v1": {
+    "destroy": [],
+    "set_image_source": [
+      "file_source",
+      "role"
+    ],
+    "set_video_source": [
+      "file_source",
+      "role"
+    ],
+    "failed": [
+      "file_source",
+      "error"
+    ],
+    "changed": [
+      "role",
+      "source_type",
+      "file_source"
+    ]
+  },
+  "treeland_wallpaper_notifier_v1": {
+    "destroy": [],
+    "add": [
+      "source_type",
+      "file_source"
+    ],
+    "remove": [
+      "file_source"
+    ]
+  },
+  "treeland_wallpaper_shell_v1": {
+    "destroy": [],
+    "get_treeland_wallpaper_surface": [
+      "id",
+      "surface",
+      "file_source"
+    ]
+  },
+  "treeland_wallpaper_surface_v1": {
+    "destroy": [],
+    "source_failed": [
+      "error"
+    ],
+    "position": [
+      "position"
+    ],
+    "pause": [],
+    "set_playback_rate": [
+      "rate"
+    ],
+    "play": [],
+    "slow_down": [
+      "duration"
+    ]
+  },
+  "treeland_window_management_v1": {
+    "set_desktop": [
+      "state"
+    ],
+    "destroy": [],
+    "show_desktop": [
+      "state"
+    ]
+  },
+  "treeland_wine_window_manager_v1": {
+    "destroy": [],
+    "get_window_control": [
+      "id",
+      "toplevel"
+    ]
+  },
+  "treeland_wine_window_control_v1": {
+    "destroy": [],
+    "set_position": [
+      "x",
+      "y"
+    ],
+    "set_z_order": [
+      "op",
+      "sibling_id"
+    ],
+    "window_id": [
+      "id"
+    ],
+    "configure_position": [
+      "x",
+      "y"
+    ],
+    "configure_stacking": [
+      "topmost"
+    ]
+  },
+  "treeland_wine_window_state_manager_v1": {
+    "destroy": [],
+    "get_window_state": [
+      "id",
+      "toplevel"
+    ]
+  },
+  "treeland_wine_window_state_v1": {
+    "destroy": [],
+    "unminimize": [],
+    "activate": [
+      "serial",
+      "reason",
+      "seat"
+    ],
+    "set_attention": [
+      "count",
+      "timeout_ms"
+    ],
+    "clear_attention": [],
+    "state_changed": [
+      "state"
+    ],
+    "activate_denied": [
+      "serial"
+    ]
+  }
+}
