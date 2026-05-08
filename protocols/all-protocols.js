@@ -3352,6 +3352,446 @@ const ALL_PROTOCOL_DATA = {
     "activate_denied": [
       "serial"
     ]
+  },
+  "zwlr_data_control_manager_v1": {
+    "create_data_source": [
+      "id"
+    ],
+    "get_data_device": [
+      "id",
+      "seat"
+    ],
+    "destroy": []
+  },
+  "zwlr_data_control_device_v1": {
+    "set_selection": [
+      "source"
+    ],
+    "destroy": [],
+    "set_primary_selection": [
+      "source"
+    ],
+    "data_offer": [
+      "id"
+    ],
+    "selection": [
+      "id"
+    ],
+    "finished": [],
+    "primary_selection": [
+      "id"
+    ]
+  },
+  "zwlr_data_control_source_v1": {
+    "offer": [
+      "mime_type"
+    ],
+    "destroy": [],
+    "send": [
+      "mime_type",
+      "fd"
+    ],
+    "cancelled": []
+  },
+  "zwlr_data_control_offer_v1": {
+    "receive": [
+      "mime_type",
+      "fd"
+    ],
+    "destroy": [],
+    "offer": [
+      "mime_type"
+    ]
+  },
+  "zwlr_export_dmabuf_manager_v1": {
+    "capture_output": [
+      "frame",
+      "overlay_cursor",
+      "output"
+    ],
+    "destroy": []
+  },
+  "zwlr_export_dmabuf_frame_v1": {
+    "destroy": [],
+    "frame": [
+      "width",
+      "height",
+      "offset_x",
+      "offset_y",
+      "buffer_flags",
+      "flags",
+      "format",
+      "mod_high",
+      "mod_low",
+      "num_objects"
+    ],
+    "object": [
+      "index",
+      "fd",
+      "size",
+      "offset",
+      "stride",
+      "plane_index"
+    ],
+    "ready": [
+      "tv_sec_hi",
+      "tv_sec_lo",
+      "tv_nsec"
+    ],
+    "cancel": [
+      "reason"
+    ]
+  },
+  "zwlr_foreign_toplevel_manager_v1": {
+    "stop": [],
+    "toplevel": [
+      "toplevel"
+    ],
+    "finished": []
+  },
+  "zwlr_foreign_toplevel_handle_v1": {
+    "set_maximized": [],
+    "unset_maximized": [],
+    "set_minimized": [],
+    "unset_minimized": [],
+    "activate": [
+      "seat"
+    ],
+    "close": [],
+    "set_rectangle": [
+      "surface",
+      "x",
+      "y",
+      "width",
+      "height"
+    ],
+    "destroy": [],
+    "set_fullscreen": [
+      "output"
+    ],
+    "unset_fullscreen": [],
+    "title": [
+      "title"
+    ],
+    "app_id": [
+      "app_id"
+    ],
+    "output_enter": [
+      "output"
+    ],
+    "output_leave": [
+      "output"
+    ],
+    "state": [
+      "state"
+    ],
+    "done": [],
+    "closed": [],
+    "parent": [
+      "parent"
+    ]
+  },
+  "zwlr_gamma_control_manager_v1": {
+    "get_gamma_control": [
+      "id",
+      "output"
+    ],
+    "destroy": []
+  },
+  "zwlr_gamma_control_v1": {
+    "set_gamma": [
+      "fd"
+    ],
+    "destroy": [],
+    "gamma_size": [
+      "size"
+    ],
+    "failed": []
+  },
+  "zwlr_input_inhibit_manager_v1": {
+    "get_inhibitor": [
+      "id"
+    ]
+  },
+  "zwlr_input_inhibitor_v1": {
+    "destroy": []
+  },
+  "zwlr_layer_shell_v1": {
+    "get_layer_surface": [
+      "id",
+      "surface",
+      "output",
+      "layer",
+      "namespace"
+    ],
+    "destroy": []
+  },
+  "zwlr_layer_surface_v1": {
+    "set_size": [
+      "width",
+      "height"
+    ],
+    "set_anchor": [
+      "anchor"
+    ],
+    "set_exclusive_zone": [
+      "zone"
+    ],
+    "set_margin": [
+      "top",
+      "right",
+      "bottom",
+      "left"
+    ],
+    "set_keyboard_interactivity": [
+      "keyboard_interactivity"
+    ],
+    "get_popup": [
+      "popup"
+    ],
+    "ack_configure": [
+      "serial"
+    ],
+    "destroy": [],
+    "set_layer": [
+      "layer"
+    ],
+    "configure": [
+      "serial",
+      "width",
+      "height"
+    ],
+    "closed": []
+  },
+  "zwlr_output_manager_v1": {
+    "create_configuration": [
+      "id",
+      "serial"
+    ],
+    "stop": [],
+    "head": [
+      "head"
+    ],
+    "done": [
+      "serial"
+    ],
+    "finished": []
+  },
+  "zwlr_output_head_v1": {
+    "release": [],
+    "name": [
+      "name"
+    ],
+    "description": [
+      "description"
+    ],
+    "physical_size": [
+      "width",
+      "height"
+    ],
+    "mode": [
+      "mode"
+    ],
+    "enabled": [
+      "enabled"
+    ],
+    "current_mode": [
+      "mode"
+    ],
+    "position": [
+      "x",
+      "y"
+    ],
+    "transform": [
+      "transform"
+    ],
+    "scale": [
+      "scale"
+    ],
+    "finished": [],
+    "make": [
+      "make"
+    ],
+    "model": [
+      "model"
+    ],
+    "serial_number": [
+      "serial_number"
+    ],
+    "adaptive_sync": [
+      "state"
+    ]
+  },
+  "zwlr_output_mode_v1": {
+    "release": [],
+    "size": [
+      "width",
+      "height"
+    ],
+    "refresh": [
+      "refresh"
+    ],
+    "preferred": [],
+    "finished": []
+  },
+  "zwlr_output_configuration_v1": {
+    "enable_head": [
+      "id",
+      "head"
+    ],
+    "disable_head": [
+      "head"
+    ],
+    "apply": [],
+    "test": [],
+    "destroy": [],
+    "succeeded": [],
+    "failed": [],
+    "cancelled": []
+  },
+  "zwlr_output_configuration_head_v1": {
+    "set_mode": [
+      "mode"
+    ],
+    "set_custom_mode": [
+      "width",
+      "height",
+      "refresh"
+    ],
+    "set_position": [
+      "x",
+      "y"
+    ],
+    "set_transform": [
+      "transform"
+    ],
+    "set_scale": [
+      "scale"
+    ],
+    "set_adaptive_sync": [
+      "state"
+    ]
+  },
+  "zwlr_output_power_manager_v1": {
+    "get_output_power": [
+      "id",
+      "output"
+    ],
+    "destroy": []
+  },
+  "zwlr_output_power_v1": {
+    "set_mode": [
+      "mode"
+    ],
+    "destroy": [],
+    "mode": [
+      "mode"
+    ],
+    "failed": []
+  },
+  "zwlr_screencopy_manager_v1": {
+    "capture_output": [
+      "frame",
+      "overlay_cursor",
+      "output"
+    ],
+    "capture_output_region": [
+      "frame",
+      "overlay_cursor",
+      "output",
+      "x",
+      "y",
+      "width",
+      "height"
+    ],
+    "destroy": []
+  },
+  "zwlr_screencopy_frame_v1": {
+    "copy": [
+      "buffer"
+    ],
+    "destroy": [],
+    "copy_with_damage": [
+      "buffer"
+    ],
+    "buffer": [
+      "format",
+      "width",
+      "height",
+      "stride"
+    ],
+    "flags": [
+      "flags"
+    ],
+    "ready": [
+      "tv_sec_hi",
+      "tv_sec_lo",
+      "tv_nsec"
+    ],
+    "failed": [],
+    "damage": [
+      "x",
+      "y",
+      "width",
+      "height"
+    ],
+    "linux_dmabuf": [
+      "format",
+      "width",
+      "height"
+    ],
+    "buffer_done": []
+  },
+  "zwlr_virtual_pointer_v1": {
+    "motion": [
+      "time",
+      "dx",
+      "dy"
+    ],
+    "motion_absolute": [
+      "time",
+      "x",
+      "y",
+      "x_extent",
+      "y_extent"
+    ],
+    "button": [
+      "time",
+      "button",
+      "state"
+    ],
+    "axis": [
+      "time",
+      "axis",
+      "value"
+    ],
+    "frame": [],
+    "axis_source": [
+      "axis_source"
+    ],
+    "axis_stop": [
+      "time",
+      "axis"
+    ],
+    "axis_discrete": [
+      "time",
+      "axis",
+      "value",
+      "discrete"
+    ],
+    "destroy": []
+  },
+  "zwlr_virtual_pointer_manager_v1": {
+    "create_virtual_pointer": [
+      "seat",
+      "id"
+    ],
+    "destroy": [],
+    "create_virtual_pointer_with_output": [
+      "seat",
+      "output",
+      "id"
+    ]
   }
 }
 ;

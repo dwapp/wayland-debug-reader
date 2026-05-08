@@ -11,6 +11,7 @@ SEARCH_DIRS=(
     /usr/share/wayland/
     /usr/share/wayland-protocols/
     /usr/share/treeland-protocols/
+    /usr/share/wlr-protocols/
 )
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
