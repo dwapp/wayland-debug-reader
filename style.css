@@ -17,8 +17,8 @@
   --highlight: rgba(250,200,30,0.18);
   --highlight-border: #f0b020;
   --radius:    6px;
-  --font-mono: 'JetBrains Mono', 'Fira Mono', monospace;
-  --font-ui:   'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Mono', 'Cascadia Code', ui-monospace, 'Noto Sans Mono CJK SC', monospace;
+  --font-ui:   system-ui, -apple-system, 'Segoe UI', 'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
   --drop-overlay: rgba(13,15,24,.96);
   --obj-tag-bg: rgba(255,255,255,.07);
   --hover-overlay: rgba(255,255,255,.04);
