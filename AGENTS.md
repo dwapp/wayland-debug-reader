@@ -50,6 +50,12 @@
 *   日志正则 `logLine` 会捕获最前面的时间戳字符串，并由 `parseFloat()` 转化为 `line.timestamp`。
 *   如果开启了**相对时间** (`showTimeDiff = true`)，系统会寻找日志中**第一个有效的数字时间戳作为基准 0 点**，后续日志显示为相对时间差（如 `[+0.016]`），便于排查性能和延迟问题。
 
+### 3.5 协议参数显示 (Protocol Argument Names)
+*   **功能描述**：在事件/请求的参数列表中显示参数名，如 `repeat_info(rate: 25, delay: 600)`。
+*   **数据来源**：通过 `loadProtocolJSON()` 加载由 `protocols/convert-xml.py` 生成的 JSON 文件（如 `wayland.json`）。
+*   **特殊逻辑**：对于 `wl_registry.bind` 等具有“未指定接口 (untyped new_id)”的参数，`convert-xml.py` 会将其扩展为 3 个显示参数（interface, version, id），以匹配 libwayland 的调试输出格式。
+*   **加载方式**：在 `index.html` 初始化时调用 `loadProtocolJSON('protocols/wayland.json')`。
+
 ## 4. 性能边界 (Performance Limitations)
 
 *   **当前做法**：`renderLog()` 会清空 `log-panel` 并使用 `DocumentFragment` 一次性全量插入所有通过了过滤条件的行。
