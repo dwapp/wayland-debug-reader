@@ -31,6 +31,12 @@ const MESSAGES = {
     statEvents:       '事件',
     statRequests:     '请求',
     statComments:     '注释',
+    copyBtn:          '📋 复制',
+    exportBtn:        '💾 导出',
+    copyTitle:        '将过滤后的日志复制到剪贴板',
+    exportTitle:      '将过滤后的日志导出为文件',
+    copySuccess:      '✅ 已复制！',
+    copyFail:         '❌ 复制失败',
   },
   en: {
     fileLabel:        'No file loaded',
@@ -58,6 +64,12 @@ const MESSAGES = {
     statEvents:       'events',
     statRequests:     'requests',
     statComments:     'comments',
+    copyBtn:          '📋 Copy',
+    exportBtn:        '💾 Export',
+    copyTitle:        'Copy filtered log to clipboard',
+    exportTitle:      'Export filtered log to file',
+    copySuccess:      '✅ Copied!',
+    copyFail:         '❌ Copy failed',
   }
 };
 
